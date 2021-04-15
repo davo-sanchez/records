@@ -75,4 +75,4 @@ Route::get('/filtros', 'FilterController@index')->name('filter.index');
 Route::get('/filtro/crear', 'FilterController@create')->name('filter.create');
 Route::post('/filtro/crear', 'FilterController@store')->name('filter.store');
 
-Route::get('/filtro/{slug}/configuracion', 'FilterController@config')->name('filter.config');
+Route::get('/filtro/{filter}/configuracion', 'FilterController@configuration')->name('filter.config');

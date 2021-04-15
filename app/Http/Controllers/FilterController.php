@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFilter;
 use App\Filter;
-
+use App\Condition;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -39,5 +39,12 @@ class FilterController extends Controller
 
         return back();
 
+    }
+
+    public function configuration($filter){
+        return view('filter.config', [
+            'filter' => $filter,
+            'values' => Condition::where('filter_id','=',$filter)
+        ]);
     }
 }

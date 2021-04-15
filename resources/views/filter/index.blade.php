@@ -39,7 +39,7 @@
                             <td>{{ $f->created_at }}</td>
                             <td>{{ $f->updated_at }}</td>
                             <td>
-                                <i class="fas fa-edit"></i>
+                                <a href="{{ route('filter.config',['filter' => $f->id]) }}"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach
