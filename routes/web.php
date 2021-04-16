@@ -72,6 +72,10 @@ Auth::routes();
 
 Route::get('/users','UserController@index')->name('user.index');
 
+Route::get('/roles','RoleController@index')->name('role.index');
+Route::get('/rol/crear','RoleController@create')->name('role.create');
+Route::post('/rol/crear','RoleController@store')->name('role.store');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/expedientes', 'ExpedienteController@index')
