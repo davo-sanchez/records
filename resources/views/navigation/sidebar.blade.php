@@ -67,8 +67,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('filter.index') }}">Ver Todos</a>
-                <a class="collapse-item" href="{{ route('filter.create') }}">Nuevo Usuario</a>
+                <a class="collapse-item" href="{{ route('user.index') }}">Ver Todos</a>
+                <a class="collapse-item" href="{{ route('register') }}">Nuevo Usuario</a>
             </div>
         </div>
     </li>

@@ -70,6 +70,8 @@ use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
+Route::get('/users','UserController@index')->name('user.index');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
