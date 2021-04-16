@@ -8,7 +8,14 @@
 
 @section('content')
 
- <!-- DataTales Example -->
+ 
+<!-- DataTales Example -->
+@can('expedientes.create', User::class)
+    <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">
+        Nuevo
+    </a>
+@endcan
+
  <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Historial Completo</h6>
