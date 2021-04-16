@@ -15,7 +15,7 @@ class ExpedienteController extends Controller
 
     public function index(){
 
-        $expedientes = Expediente::Where('ano','=','2020')->get();
+        $expedientes = Expediente::all();
 
         return view('expediente.index', [
             'expedientes' => $expedientes
