@@ -22,6 +22,17 @@ class ExpedienteController extends Controller
         ]);
     }
 
+    public function currentYear(){
+
+        $year = date('Y');
+        
+        $expedientes = Expediente::Where('ano','=', $year)->get();
+
+        return view('expediente.index', [
+            'expedientes' => $expedientes
+        ]);
+    }
+
     public function create(){
 
         $tipos_expedientes = TipoExpediente::all();
