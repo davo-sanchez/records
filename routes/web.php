@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\DB;
 
 
 /*Route::get('/', function () {
-    return view('welcome');
 
-    /*$erecords = DB::table('e4')->get();
+    $erecords = DB::table('e4')->get();
 
     foreach($erecords as $er){
 
         $expediente = Expediente::updateOrCreate(
-            ['num_caja' => $er->num_caja,
+            [
+            'num_caja' => $er->num_caja,
             'tipo_exp' => $er->tipo_exp,
             'num_exp' => $er->num_exp,
             'n_junta' => $er->n_junta,
@@ -38,9 +38,11 @@ use Illuminate\Support\Facades\DB;
             'num_hojas' => $er->num_hojas,
             'observaciones' => $er->observaciones,
             'fecha_alta' => $er->fecha_alta,
-            'fecha_ult_mod' => $er->fecha_ult_mod],
+            'fecha_ult_mod' => $er->fecha_ult_mod
+        ],
 
-            ['num_caja' => $er->num_caja,
+            [
+            'num_caja' => $er->num_caja,
             'tipo_exp' => $er->tipo_exp,
             'num_exp' => $er->num_exp,
             'n_junta' => $er->n_junta,
@@ -56,7 +58,9 @@ use Illuminate\Support\Facades\DB;
             'observaciones' => $er->observaciones,
             'fecha_obs' => $er->fecha_obs,
             'fecha_alta' => $er->fecha_alta,
-            'fecha_ult_mod' => $er->fecha_ult_mod]
+            'fecha_ult_mod' => $er->fecha_ult_mod,
+            'creator_id' => 1
+            ]
         );
 
         $expediente->save();
