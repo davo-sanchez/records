@@ -74,9 +74,17 @@ Route::get('/users','UserController@index')->name('user.index');
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
-Route::get('/expedientes/actual', 'ExpedienteController@currentYear')->name('expediente.current');
-Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create');
+Route::get('/expedientes', 'ExpedienteController@index')
+->name('expediente.index')
+->middleware('permission:expedientes.index');
+
+Route::get('/expedientes/actual', 'ExpedienteController@currentYear')
+->name('expediente.current')
+->middleware('permission:expedientes.index');
+
+Route::get('/expediente/crear', 'ExpedienteController@create')
+->name('expediente.create')
+->middleware('permission:expedientes.create');
 
 Route::get('/filtros', 'FilterController@index')->name('filter.index');
 Route::get('/filtro/crear', 'FilterController@create')->name('filter.create');
