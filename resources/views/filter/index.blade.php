@@ -12,6 +12,14 @@
     Nuevo
 </a>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">
+          Filtros
+      </li>
+    </ol>
+  </nav>
+
  <!-- DataTales Filter -->
  <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -32,14 +40,14 @@
                 </thead>
                 <tbody>
                     @foreach ($filters as $f)
-                        <tr>
+                        <tr class='table-row'>
                             <td>{{ $f->name }}</td>
                             <td>{{ $f->description }}</td>
                             <td>{{ $f->creator->name }}</td>
                             <td>{{ $f->created_at }}</td>
                             <td>{{ $f->updated_at }}</td>
                             <td>
-                                <a href="{{ route('filter.config',['filter' => $f->id]) }}"><i class="fas fa-edit"></i></a>
+                                <a class="edit-row-btn" href="{{ route('filter.config',['filter' => $f->id]) }}"><i class="fas fa-cogs"></i></a>
                             </td>
                         </tr>
                     @endforeach

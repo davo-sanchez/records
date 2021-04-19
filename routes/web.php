@@ -69,6 +69,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
+Route::get('/expedientes/{filter_slug}', 'ExpedienteController@filter')->name('expediente.filter');
 Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create');
 
 Route::get('/filtros', 'FilterController@index')->name('filter.index');

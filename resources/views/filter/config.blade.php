@@ -5,6 +5,14 @@
 @section('content')
  <!-- DataTales Filter -->
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" aria-current="page">
+              <a href="{{ route('filter.index') }}">Filtros</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Configurar Filtro: {{ $filter->name }}</li>
+        </ol>
+      </nav>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Configurar Filtro</h6>

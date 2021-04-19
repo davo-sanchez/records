@@ -1,0 +1,7 @@
+.edit-row-btn {
+    display: none;
+}
+
+.table-row:hover td a.edit-row-btn {
+    display: block;
+}

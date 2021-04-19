@@ -37,13 +37,15 @@ class FilterController extends Controller
 
         $filter->save();
 
-        return back();
+        $filter_id = Filter::where('slug',$filter->slug)->first()->id;
+
+        return redirect()->route('filter.config',['filter' => Filter::where()]);
 
     }
 
     public function configuration($filter){
         return view('filter.config', [
-            'filter' => $filter,
+            'filter' => Filter::findOrFail($filter),
             'values' => Condition::where('filter_id','=',$filter)
         ]);
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Expediente;
+use App\Filter;
+use App\Condition;
 use App\TipoExpediente;
 
 class ExpedienteController extends Controller
@@ -30,4 +32,19 @@ class ExpedienteController extends Controller
             'tipos' => $tipos_expedientes
         ]);
     }
+
+    public function filter($filter_slug){
+
+        $filter = Filter::where('slug',$filter_slug)->first();
+
+        $conditions = Condition::where('filter_id',$filter->id)->get();
+
+        $expedientes = Expediente::where()->get();
+
+        return view('expediente.index', [
+            'expedientes' => $expedientes
+        ]);
+
+    }
+
 }
