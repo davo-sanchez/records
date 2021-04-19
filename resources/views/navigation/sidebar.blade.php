@@ -37,11 +37,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Filtros</h6>
-<<<<<<< HEAD
-                <a class="collapse-item" href="">Año Actual</a>
-=======
                 <a class="collapse-item" href="{{ route('expediente.current') }}">Año Actual</a>
->>>>>>> 0a9ceb2397933316ff53ca6e5dcbf2602d98a3e3
                 <a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Historial completo</a>
                 <!--<a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Nuevo Filtro</a>-->
             </div>
@@ -59,20 +55,17 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-<<<<<<< HEAD
     <!--<div class="sidebar-heading">
         Reportes
     </div>-->
 
     <!-- Nav Item - Pages Collapse Menu -->
    <!-- <li class="nav-item">
-=======
     <div class="sidebar-heading">
         Sistema
     </div>
 
     <li class="nav-item">
->>>>>>> 0a9ceb2397933316ff53ca6e5dcbf2602d98a3e3
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-users"></i>
@@ -86,7 +79,7 @@
         </div>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    Nav Item - Pages Collapse Menu -->
     <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
@@ -100,10 +93,7 @@
             </div>
         </div>
     </li>-->
-<<<<<<< HEAD
-=======
 
->>>>>>> 0a9ceb2397933316ff53ca6e5dcbf2602d98a3e3
     <!-- Divider -->
     <!--<hr class="sidebar-divider d-none d-md-block">-->
 
