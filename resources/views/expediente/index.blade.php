@@ -35,7 +35,7 @@
                             <td>{{ $e->num_exp.'-'.$e->ano."/XVI/".$e->adicional }}</td>
                             <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
                             <td>{{ $e->ano }}</td>
-                            <td>{{ $e->tiempo_archivado }}</td>
+                            <td>{{ $e->tiempo_archivo }}</td>
                             <td>{{ $e->num_legajos }}</td>
                             <td>{{ $e->num_hojas }}</td>
                             <td>{{ $e->observaciones }}</td>
