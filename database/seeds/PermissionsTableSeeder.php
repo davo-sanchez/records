@@ -14,22 +14,40 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //Permission list
-        Permission::create(['name' => 'expedientes.index']);
-        Permission::create(['name' => 'expedientes.edit']);
-        Permission::create(['name' => 'expedientes.show']);
-        Permission::create(['name' => 'expedientes.create']);
-        Permission::create(['name' => 'expedientes.destroy']);
+        //Expedientes list
+        Permission::create(['name' => 'expedientes.select','display_name' => 'Consultar']);
+        Permission::create(['name' => 'expedientes.edit', 'display_name' => 'Editar']);
+        Permission::create(['name' => 'expedientes.create', 'display_name' => 'Crear']);
+        Permission::create(['name' => 'expedientes.destroy', 'display_name' => 'Eliminar']);
+
+        //Usuarios
+        Permission::create(['name' => 'user.select','display_name' => 'Consultar']);
+        Permission::create(['name' => 'user.edit', 'display_name' => 'Editar']);
+        Permission::create(['name' => 'user.create', 'display_name' => 'Crear']);
+        Permission::create(['name' => 'user.destroy', 'display_name' => 'Eliminar']);
+
+        //Roles
+        Permission::create(['name' => 'role.select','display_name' => 'Consultar']);
+        Permission::create(['name' => 'role.edit', 'display_name' => 'Editar']);
+        Permission::create(['name' => 'role.create', 'display_name' => 'Crear']);
+        Permission::create(['name' => 'role.destroy', 'display_name' => 'Eliminar']);
 
         //Admin
         $admin = Role::create(['name' => 'Administrador']);
 
         $admin->givePermissionTo([
-            'expedientes.index',
+            'expedientes.select',
             'expedientes.edit',
-            'expedientes.show',
             'expedientes.create',
-            'expedientes.destroy'
+            'expedientes.destroy',
+            'user.select',
+            'user.edit',
+            'user.create',
+            'user.destroy',
+            'role.select',
+            'role.edit',
+            'role.create',
+            'role.destroy'
         ]);
         //$admin->givePermissionTo('products.index');
         //$admin->givePermissionTo(Permission::all());
@@ -38,15 +56,11 @@ class PermissionsTableSeeder extends Seeder
         $guest = Role::create(['name' => 'Consultor']);
 
         $guest->givePermissionTo([
-            'expedientes.index',
-            'expedientes.show'
+            'expedientes.select',
         ]);
 
         //User Admin
-        $user = User::find(1); //Italo Morales
+        $user = User::find(1); 
         $user->assignRole('Administrador');
-
-        $user = User::find(2); //Italo Morales
-        $user->assignRole('Consultor');
     }
 }

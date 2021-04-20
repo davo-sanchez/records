@@ -26,12 +26,18 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($roles as $role)
                         <tr>
                             <td>{{ $role->name }}</td>
+                            <td>
+                                <a href="{{ route('role.view',['id' => $role->id]) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

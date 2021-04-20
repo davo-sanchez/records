@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>Rol</td>
+                            <td>{{ $user->roles->pluck('name') }}</td>
                             <td>
                                 <a href=""><i class="fas fa-edit"></i></a>
                             </td>

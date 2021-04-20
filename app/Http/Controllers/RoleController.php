@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRolRequest;
 use App\Role;
+use App\Permission;
 
 class RoleController extends Controller
 {
@@ -17,6 +18,18 @@ class RoleController extends Controller
             'roles' => Role::all()
         ]);
     }
+
+    public function view($id){
+
+        $role = Role::findOrFail($id);
+
+        $permissions = Permission::all();
+
+        return view('role.view',[
+            'permissions' => Role::all()
+        ]);
+    }
+
 
     public function create(){
         return view('role.create');
