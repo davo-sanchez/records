@@ -11,7 +11,7 @@
  
 <!-- DataTales Example -->
 @can('expedientes.create', User::class)
-    <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">
+    <a href="{{ route('role.create') }}" class="mb-3 btn btn-primary">
         Nuevo
     </a>
 @endcan

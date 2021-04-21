@@ -49,8 +49,6 @@ class PermissionsTableSeeder extends Seeder
             'role.create',
             'role.destroy'
         ]);
-        //$admin->givePermissionTo('products.index');
-        //$admin->givePermissionTo(Permission::all());
        
         //Guest
         $guest = Role::create(['name' => 'Consultor']);
