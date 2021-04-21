@@ -33,7 +33,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'role.destroy', 'display_name' => 'Eliminar']);
 
         //Admin
-        $admin = Role::create(['name' => 'Administrador']);
+        $admin = Role::create(['name' => 'Administrador','editable' => 0]);
 
         $admin->givePermissionTo([
             'expedientes.select',

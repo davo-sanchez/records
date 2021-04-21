@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{{ __('Nuevo Usuario') }}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ __('Actualizar Usuario: '.$user->name) }}</h6>
                 </div>
 
                 <div class="card-body">
@@ -71,7 +71,6 @@
                             <div class="col-md-6">
                                 <select name="role" id="role" class="form-control" required>
                                     @foreach ($roles as $role)
-
                                         @foreach ($user->roles as $user_role)
                                             <option value="{{ $role->id }}" @if($role->name == $user_role->name) selected @endif>{{ $role->name }}</option>
                                         @endforeach
@@ -83,7 +82,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Registrar') }}
+                                    {{ __('Actualizar') }}
                                 </button>
                             </div>
                         </div>

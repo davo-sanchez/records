@@ -15,7 +15,7 @@ class RoleController extends Controller
 
     public function index(){
         return view('role.index',[
-            'roles' => Role::all()
+            'roles' => Role::where('editable','=',1)->get()
         ]);
     }
 
@@ -26,6 +26,7 @@ class RoleController extends Controller
         $permissions = Permission::all();
 
         return view('role.view',[
+            'role' => $role,
             'permissions' => Role::all()
         ]);
     }
