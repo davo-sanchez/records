@@ -33,7 +33,11 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->roles->pluck('name') }}</td>
+                            <td>
+                                @foreach ($user->roles as $user_role)
+                                    {{ $user_role->name }}
+                                @endforeach
+                            </td>
                             <td>
                                 <a href=""><i class="fas fa-edit"></i></a>
                             </td>
