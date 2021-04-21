@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 
@@ -17,7 +18,9 @@ class UserController extends Controller
     public function index(){
 
         return view('users.index',[
-            'users' => User::with('roles')->get()
+            'users' => User::with('roles')
+                             ->where('id','<>',Auth::id())
+                             ->get()
         ]);
     }
 
