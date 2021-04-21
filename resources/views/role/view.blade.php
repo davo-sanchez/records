@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                       <label for="name">Nombre</label>
-                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelp">
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelp" value="{{ $role->name }}">
                       <div class="invalid-feedback">@error('name') {{ $message }} @enderror</div>
                     </div>
 
@@ -35,26 +35,57 @@
                   <form method="POST" action="{{ route('role.store') }}">
                     @csrf
 
-                    <fieldset>
-                        <legend>Expedientes</legend> 
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-0">
+                        <fieldset>
+                          <legend>Expedientes</legend> 
+  
+                          @foreach ($expediente_permissions as $ep)
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="{{ $ep->name }}" value="" id="defaultCheck1">
+                              <label class="form-check-label" for="defaultCheck1">
+                                {{ $ep->display_name }}
+                              </label>
+                          </div>
+                          @endforeach
+  
+                        </fieldset>
+                      </div>
+  
+                      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-0">
+                        <fieldset>
+                          <legend>Usuarios</legend> 
+  
+                          @foreach ($user_permissions as $up)
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="{{ $up->name }}" value="" id="defaultCheck1">
+                              <label class="form-check-label" for="defaultCheck1">
+                                {{ $up->display_name }}
+                              </label>
+                          </div>
+                          @endforeach
+  
+                        </fieldset>
+                      </div>
+  
+                      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-0">
+                        <fieldset>
+                          <legend>Roles</legend> 
+  
+                          @foreach ($role_permissions as $rp)
+                          <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="{{ $rp->name }}" value="" id="defaultCheck1">
+                              <label class="form-check-label" for="defaultCheck1">
+                                {{ $rp->display_name }}
+                              </label>
+                          </div>
+                          @endforeach
+  
+                        </fieldset>
+                      </div>
+                    </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                              Consultar
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                              Consultar
-                            </label>
-                        </div>
-
-                    </fieldset>
-
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
                   </form>
                 </div>
             </div>

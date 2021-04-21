@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRolRequest;
+use Illuminate\Support\Facades\DB;
 use App\Role;
 use App\Permission;
 
@@ -23,11 +24,23 @@ class RoleController extends Controller
 
         $role = Role::findOrFail($id);
 
-        $permissions = Permission::all();
+        $expediente_permissions = DB::table('permissions')
+        ->where('name', 'like', '%'.'expedientes'.'%')
+        ->get();
+
+        $user_permissions = DB::table('permissions')
+        ->where('name', 'like', '%'.'user'.'%')
+        ->get();
+
+        $role_permissions = DB::table('permissions')
+        ->where('name', 'like', '%'.'role'.'%')
+        ->get();
 
         return view('role.view',[
             'role' => $role,
-            'permissions' => Role::all()
+            'expediente_permissions' => $expediente_permissions,
+            'user_permissions' => $user_permissions,
+            'role_permissions' => $role_permissions
         ]);
     }
 
