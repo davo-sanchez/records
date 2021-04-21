@@ -39,7 +39,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href=""><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('user.view' ,['id' => $user->id]) }}"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
                     @endforeach

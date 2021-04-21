@@ -71,6 +71,8 @@ use Illuminate\Support\Facades\DB;
 Auth::routes();
 
 Route::get('/users','UserController@index')->name('user.index');
+Route::get('/user/view/{id}','UserController@view')->name('user.view');
+Route::post('/user/update','UserController@update')->name('user.update');
 
 Route::get('/roles','RoleController@index')->name('role.index');
 Route::get('/role/{id}','RoleController@view')->name('role.view');
