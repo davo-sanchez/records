@@ -54,15 +54,10 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <!--<div class="sidebar-heading">
-        Reportes
-    </div>-->
-
     <!-- Nav Item - Pages Collapse Menu -->
-   <!-- <li class="nav-item">
+   <li class="nav-item">
     <div class="sidebar-heading">
-        Sistema
+        Seguridad
     </div>
 
     <li class="nav-item">
@@ -92,7 +87,7 @@
             </div>
         </div>
     </li>
-
+<!--
     Nav Item - Pages Collapse Menu -->
     <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
