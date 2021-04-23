@@ -83,11 +83,11 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/expedientes', 'ExpedienteController@index')
 ->name('expediente.index')
-->middleware('permission:expedientes.index');
+->middleware('permission:expedientes.select');
 
 Route::get('/expedientes/actual', 'ExpedienteController@currentYear')
 ->name('expediente.current')
-->middleware('permission:expedientes.index');
+->middleware('permission:expedientes.select');
 
 Route::get('/expediente/crear', 'ExpedienteController@create')
 ->name('expediente.create')
