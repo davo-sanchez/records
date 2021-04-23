@@ -70,12 +70,28 @@ use Illuminate\Support\Facades\DB;
 
 Auth::routes();
 
+Route::get('/users','UserController@index')->name('user.index');
+Route::get('/user/view/{id}','UserController@view')->name('user.view');
+Route::post('/user/update','UserController@update')->name('user.update');
+
+Route::get('/roles','RoleController@index')->name('role.index');
+Route::get('/rol/{id}','RoleController@view')->name('role.view');
+Route::get('/rol/crear','RoleController@create')->name('role.create');
+Route::post('/rol/guardar','RoleController@store')->name('role.store');
+
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
-Route::get('/expedientes/{filter_slug}', 'ExpedienteController@filter')->name('expediente.filter');
-Route::get('/expedientes/actual', 'ExpedienteController@currentYear')->name('expediente.current');
-Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create');
+Route::get('/expedientes', 'ExpedienteController@index')
+->name('expediente.index')
+->middleware('permission:expedientes.select');
+
+Route::get('/expedientes/actual', 'ExpedienteController@currentYear')
+->name('expediente.current')
+->middleware('permission:expedientes.select');
+
+Route::get('/expediente/crear', 'ExpedienteController@create')
+->name('expediente.create')
+->middleware('permission:expedientes.create');
 
 Route::get('/filtros', 'FilterController@index')->name('filter.index');
 Route::get('/filtro/crear', 'FilterController@create')->name('filter.create');
