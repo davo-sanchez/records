@@ -29,15 +29,17 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+        @if (Auth::check())
         @include('navigation.sidebar')
-
+        @endif
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
+                @if (Auth::check())
                 @include('navigation.topbar')
-
+                @endif
                 <!-- Begin Page Content -->
                 <div class="container-fluid py-4">
                     @yield('content')
