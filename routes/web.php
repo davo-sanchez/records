@@ -24,6 +24,7 @@ Route::post('/user/update','UserController@update')->name('user.update');
 Route::get('/roles','RoleController@index')->name('role.index');
 Route::get('/rol/crear','RoleController@create')->name('role.create');
 Route::post('/rol/guardar','RoleController@store')->name('role.store');
+Route::post('/rol/update/{id}','RoleController@update')->name('role.update');
 Route::get('/rol/{id}','RoleController@view')->name('role.view');
 
 Route::get('/expedientes', 'ExpedienteController@index')

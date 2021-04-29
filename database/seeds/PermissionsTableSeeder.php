@@ -15,22 +15,22 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         //Expedientes list
-        Permission::create(['name' => 'expedientes.select','display_name' => 'Consultar']);
-        Permission::create(['name' => 'expedientes.edit', 'display_name' => 'Editar']);
-        Permission::create(['name' => 'expedientes.create', 'display_name' => 'Crear']);
-        Permission::create(['name' => 'expedientes.destroy', 'display_name' => 'Eliminar']);
+        Permission::create(['name' => 'expedientes.select','display_name' => 'Consultar Expedientes']);
+        Permission::create(['name' => 'expedientes.edit', 'display_name' => 'Editar Expedientes']);
+        Permission::create(['name' => 'expedientes.create', 'display_name' => 'Crear Expedientes']);
+        Permission::create(['name' => 'expedientes.destroy', 'display_name' => 'Eliminar Expedientes']);
 
         //Usuarios
-        Permission::create(['name' => 'user.select','display_name' => 'Consultar']);
-        Permission::create(['name' => 'user.edit', 'display_name' => 'Editar']);
-        Permission::create(['name' => 'user.create', 'display_name' => 'Crear']);
-        Permission::create(['name' => 'user.destroy', 'display_name' => 'Eliminar']);
+        Permission::create(['name' => 'user.select','display_name' => 'Consultar Usuarios']);
+        Permission::create(['name' => 'user.edit', 'display_name' => 'Editar Usuarios']);
+        Permission::create(['name' => 'user.create', 'display_name' => 'Crear Usuarios']);
+        Permission::create(['name' => 'user.destroy', 'display_name' => 'Eliminar Usuarios']);
 
         //Roles
-        Permission::create(['name' => 'role.select','display_name' => 'Consultar']);
-        Permission::create(['name' => 'role.edit', 'display_name' => 'Editar']);
-        Permission::create(['name' => 'role.create', 'display_name' => 'Crear']);
-        Permission::create(['name' => 'role.destroy', 'display_name' => 'Eliminar']);
+        Permission::create(['name' => 'role.select','display_name' => 'Consultar Roles']);
+        Permission::create(['name' => 'role.edit', 'display_name' => 'Editar Roles']);
+        Permission::create(['name' => 'role.create', 'display_name' => 'Crear Roles']);
+        Permission::create(['name' => 'role.destroy', 'display_name' => 'Eliminar Roles']);
 
         //Admin
         $admin = Role::create(['name' => 'Administrador','editable' => 0]);

@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRolRequest;
 use Illuminate\Support\Facades\DB;
-use App\Role;
+use Spatie\Permission\Models\Role;
 use App\Permission;
 
 class RoleController extends Controller
 {
     public function __construct(){
+/*
+        $this->middleware('permission:role-select|role-create|role-edit|role-destroy', ['only' => ['index','view']]);
+        $this->middleware('permission:role-create', ['only' => ['create','store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-destroy', ['only' => ['destroy']]);*/
+
         $this->middleware('auth');
     }
 
@@ -19,31 +25,6 @@ class RoleController extends Controller
             'roles' => Role::where('editable','=',1)->get()
         ]);
     }
-
-    public function view($id){
-
-        $role = Role::findOrFail($id);
-
-        $expediente_permissions = DB::table('permissions')
-        ->where('name', 'like', '%'.'expedientes'.'%')
-        ->get();
-
-        $user_permissions = DB::table('permissions')
-        ->where('name', 'like', '%'.'user'.'%')
-        ->get();
-
-        $role_permissions = DB::table('permissions')
-        ->where('name', 'like', '%'.'role'.'%')
-        ->get();
-
-        return view('role.view',[
-            'role' => $role,
-            'expediente_permissions' => $expediente_permissions,
-            'user_permissions' => $user_permissions,
-            'role_permissions' => $role_permissions
-        ]);
-    }
-
 
     public function create(){
         return view('role.create');
@@ -61,4 +42,41 @@ class RoleController extends Controller
         return back();
 
     }
+
+    public function view($id){
+
+        $role = Role::find($id);
+        $permission = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+    
+        return view('role.view',compact('role','permission','rolePermissions'));
+        
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
+        ]);
+    
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->save();
+    
+        $role->syncPermissions($request->input('permission'));
+    
+        return redirect()->route('role.view',['id' => $id])
+                        ->with('success','Role updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        DB::table("roles")->where('id',$id)->delete();
+        return redirect()->route('roles.index')
+                        ->with('success','Role deleted successfully');
+    }
+
 }

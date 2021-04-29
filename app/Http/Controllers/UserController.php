@@ -12,6 +12,12 @@ use App\Role;
 class UserController extends Controller
 {
     public function __construct(){
+/*
+        $this->middleware('permission:user-select|user-create|user-edit|user-destroy', ['only' => ['index','view']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-destroy', ['only' => ['destroy']]);*/
+
         $this->middleware('auth');
     }
 
