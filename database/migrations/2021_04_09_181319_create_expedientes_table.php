@@ -16,7 +16,7 @@ class CreateExpedientesTable extends Migration
         Schema::create('expedientes', function (Blueprint $table) {
             $table->bigIncrements('expediente_id');
             $table->string('num_caja',15);
-            $table->unsignedBigInteger('tipo_exp');
+            $table->unsignedBigInteger('tipo_exp')->nullable();
             $table->foreign('tipo_exp')->references('tipo_expediente_id')->on('tipos_expedientes');
             $table->bigInteger('num_exp');
             $table->string('n_junta');

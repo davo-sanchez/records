@@ -120,9 +120,9 @@ class ExpedienteController extends Controller
     }
 
     public function trashbin(){
-        $expedientes = Expediente::withTrashed()->get();
+        $expedientes = Expediente::onlyTrashed()->get();
 
-        return view('expediente.index', compact('expedientes'));
+        return view('expediente.trashbin', compact('expedientes'));
     }
 
 }
