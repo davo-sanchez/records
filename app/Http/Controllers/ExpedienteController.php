@@ -18,7 +18,9 @@ class ExpedienteController extends Controller
 
     public function index(){
 
-        $expedientes = Expediente::all();
+        $expedientes = DB::table('expedientes')
+                        ->join('tipos_expedientes','expedientes.tipo_exp','=','tipos_expedientes.tipo_expediente_id')
+                        ->get();
 
         return view('expediente.index', [
             'expedientes' => $expedientes

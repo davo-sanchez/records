@@ -8,17 +8,18 @@
 
 @section('content')
 
- <!-- DataTales Example -->
-    <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+<a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+
  <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Historial Completo</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered text-center" id="example" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="example" width="100%" cellspacing="0" style="font-size: 15px">
                 <thead>
                     <tr>
+                        <th>Tipo</th>
                         <th>Caja</th>
                         <th>Clave</th>
                         <th>Nombre</th>
@@ -32,6 +33,7 @@
                 <tbody>
                     @foreach ($expedientes as $e)
                         <tr class="table-row">
+                            <td>{{ $e->nombre_tipo_expediente }}</td>
                             <td>{{ $e->num_caja }}</td>
                             <td>{{ $e->num_exp.'-'.$e->ano."/XVI/".$e->adicional }}</td>
                             <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>

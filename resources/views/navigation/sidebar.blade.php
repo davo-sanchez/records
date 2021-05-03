@@ -39,7 +39,6 @@
                 <h6 class="collapse-header">Filtros</h6>
                 <a class="collapse-item" href="{{ route('expediente.current') }}">Año Actual</a>
                 <a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Historial completo</a>
-                <!--<a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Nuevo Filtro</a>-->
             </div>
         </div>
     </li>
@@ -54,48 +53,40 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <!--<div class="sidebar-heading">
-        Reportes
-    </div>-->
-
     <!-- Nav Item - Pages Collapse Menu -->
-   <!-- <li class="nav-item">
+   <li class="nav-item">
     <div class="sidebar-heading">
-        Sistema
+        Seguridad
     </div>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-users"></i>
             <span>Usuarios</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('filter.index') }}">Ver Todos</a>
-                <a class="collapse-item" href="{{ route('filter.create') }}">Nuevo Usuario</a>
+                <a class="collapse-item" href="">Ver Todos</a>
+                <a class="collapse-item" href="">Nuevo Usuario</a>
             </div>
         </div>
     </li>
 
-    Nav Item - Pages Collapse Menu -->
-    <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRoles"
             aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-filter"></i>
-            <span>Filtros</span>
+            <i class="fas fa-fw fa-shield-alt"></i>
+            <span>Roles</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseRoles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('filter.index') }}">Ver Todos</a>
-                <a class="collapse-item" href="{{ route('filter.create') }}">Nuevo Filtro</a>
+                <a class="collapse-item" href="">Ver Todos</a>
+                <a class="collapse-item" href="">Nuevo Rol</a>
             </div>
         </div>
-    </li>-->
+    </li>
 
-    <!-- Divider -->
-    <!--<hr class="sidebar-divider d-none d-md-block">-->
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
