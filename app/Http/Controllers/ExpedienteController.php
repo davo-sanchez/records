@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ExpedienteCreateRequest;
 use App\Http\Requests\ExpedienteUpdateRequest;
 use App\Expediente;
@@ -18,9 +19,11 @@ class ExpedienteController extends Controller
 
     public function index(){
 
-        $expedientes = DB::table('expedientes')
+        /*$expedientes = DB::table('expedientes')
                         ->join('tipos_expedientes','expedientes.tipo_exp','=','tipos_expedientes.tipo_expediente_id')
-                        ->get();
+                        ->get();*/
+        
+        $expedientes = Expediente::all();                
 
         return view('expediente.index', [
             'expedientes' => $expedientes
@@ -53,18 +56,19 @@ class ExpedienteController extends Controller
             'num_caja' => ucwords($request->num_caja),
             'tipo_exp' => ucwords($request->tipo_exp),
             'num_exp' => ucwords($request->num_exp),
-            'n_junta' => ucwords($request->n_junta),
-            'ano' => ucwords($request->ano),
+            'n_junta' => strtoupper($request->n_junta),
+            'ano' => $request->ano,
             'adicional' => ucwords($request->adicional),
             'actor' => ucwords($request->actor),
             'demandado' => ucwords($request->demandado),
             'concepto' => ucwords($request->concepto),
             'procedencia' => ucwords($request->procedencia),
             'tiempo_archivo' => ucwords($request->tiempo_archivo),
-            'num_legajos' => ucwords($request->num_legajos),
-            'num_hojas' => ucwords($request->num_hojas),
+            'num_legajos' => $request->num_legajos,
+            'num_hojas' => $request->num_hojas,
             'observaciones' => ucwords($request->observaciones),
-            'fecha_obs' => ucwords($request->fecha_obs)
+            'fecha_obs' => $request->fecha_obs,
+            'creator_id' => Auth::user()->id
             ]);
 
         return redirect()->route('expediente.create')->with('status', $expediente);
@@ -104,6 +108,14 @@ class ExpedienteController extends Controller
         $expediente->save();
 
         return redirect()->route('expediente.view', ['id' => $request->expid])->with('status', '¡Expediente Actualizado!');
+
+    }
+
+    public function delete(Request $request){
+
+        Expediente::findOrFail($request->expid)->delete();
+
+        return redirect()->route('expediente.index')->with('status','¡Expediente Eliminado!');
 
     }
 

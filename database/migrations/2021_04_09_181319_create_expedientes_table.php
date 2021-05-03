@@ -14,7 +14,7 @@ class CreateExpedientesTable extends Migration
     public function up()
     {
         Schema::create('expedientes', function (Blueprint $table) {
-            $table->bigIncrements('id_exp');
+            $table->bigIncrements('expediente_id');
             $table->string('num_caja',15);
             $table->unsignedBigInteger('tipo_exp');
             $table->foreign('tipo_exp')->references('tipo_expediente_id')->on('tipos_expedientes');
@@ -33,6 +33,7 @@ class CreateExpedientesTable extends Migration
             $table->date('fecha_obs');
             $table->unsignedBigInteger('creator_id')->nullable();
             $table->foreign('creator_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

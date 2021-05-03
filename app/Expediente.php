@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\TipoExpediente;
 
 class Expediente extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'expediente_id';
 
     protected $table = 'expedientes';
@@ -26,8 +29,11 @@ class Expediente extends Model
         'num_legajos',
         'num_hojas',
         'observaciones',
-        'fecha_obs'
+        'fecha_obs',
+        'creator_id'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function tipo(){
         return $this->hasOne('App\TipoExpediente','tipo_expediente_id','tipo_exp');

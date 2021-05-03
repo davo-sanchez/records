@@ -22,3 +22,4 @@ Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente
 Route::post('/expediente/crear', 'ExpedienteController@store')->name('expediente.store');
 Route::get('/expediente/ver/{id}', 'ExpedienteController@view')->name('expediente.view');
 Route::post('/expediente/update', 'ExpedienteController@update')->name('expediente.update');
+Route::post('/expediente/delete', 'ExpedienteController@delete')->name('expediente.delete');

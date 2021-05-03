@@ -26,6 +26,12 @@
                   <h6 class="m-0 font-weight-bold text-primary">Nuevo Expediente</h6>
                 </div>
                 <div class="card-body">
+
+                  <form id="expfromdelete" style="display: none;" action="{{ route('expediente.delete') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="expid" value="{{ $expediente->expediente_id }}">
+                  </form>
+
                   <form action="{{ route('expediente.update') }}" method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="expid" value="{{ $expediente->expediente_id }}">
@@ -127,6 +133,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="submit" form="expfromdelete" class="btn btn-danger">Eliminar</button>
                   </form>
                 </div>
             </div>
