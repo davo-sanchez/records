@@ -41,6 +41,11 @@
                 <a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Historial completo</a>
             </div>
         </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('expediente.trashbin') }}">
+                <i class="fas fa-fw fa-trash"></i>
+                <span>Papelera</span></a>
+        </li>
     </li>
 
     <!-- Nav Item - Charts -->

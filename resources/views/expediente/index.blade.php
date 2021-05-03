@@ -47,7 +47,7 @@
                 <tbody>
                     @foreach ($expedientes as $e)
                         <tr class="table-row">
-                            <td>{{ $e->nombre_tipo_expediente }}</td>
+                            <td>{{ $e->tipo->nombre_tipo_expediente }}</td>
                             <td>{{ $e->num_caja }}</td>
                             <td>{{ $e->num_exp.'-'.$e->ano."/XVI/".$e->adicional }}</td>
                             <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
