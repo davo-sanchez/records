@@ -13,69 +13,16 @@ use App\Expediente;
 
 use Illuminate\Support\Facades\DB;
 
-
-
-/*Route::get('/', function () {
-
-    $erecords = DB::table('e4')->get();
-
-    foreach($erecords as $er){
-
-        $expediente = Expediente::updateOrCreate(
-            [
-            'num_caja' => $er->num_caja,
-            'tipo_exp' => $er->tipo_exp,
-            'num_exp' => $er->num_exp,
-            'n_junta' => $er->n_junta,
-            'ano' => $er->ano,
-            'adicional' => $er->adicional,
-            'actor' => $er->actor,
-            'demandado' => $er->demandado,
-            'concepto' => $er->concepto,
-            'procedencia' => $er->procedencia,
-            'tiempo_archivo' => $er->tiempo_archivo,
-            'num_legajos' => $er->num_legajos,
-            'num_hojas' => $er->num_hojas,
-            'observaciones' => $er->observaciones,
-            'fecha_alta' => $er->fecha_alta,
-            'fecha_ult_mod' => $er->fecha_ult_mod
-        ],
-
-            [
-            'num_caja' => $er->num_caja,
-            'tipo_exp' => $er->tipo_exp,
-            'num_exp' => $er->num_exp,
-            'n_junta' => $er->n_junta,
-            'ano' => $er->ano,
-            'adicional' => $er->adicional,
-            'actor' => $er->actor,
-            'demandado' => $er->demandado,
-            'concepto' => $er->concepto,
-            'procedencia' => $er->procedencia,
-            'tiempo_archivo' => $er->tiempo_archivo,
-            'num_legajos' => $er->num_legajos,
-            'num_hojas' => $er->num_hojas,
-            'observaciones' => $er->observaciones,
-            'fecha_obs' => $er->fecha_obs,
-            'fecha_alta' => $er->fecha_alta,
-            'fecha_ult_mod' => $er->fecha_ult_mod,
-            'creator_id' => 1
-            ]
-        );
-
-        $expediente->save();
-
-    }
-});*/
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
-Route::get('/expedientes/{filter_slug}', 'ExpedienteController@filter')->name('expediente.filter');
 Route::get('/expedientes/actual', 'ExpedienteController@currentYear')->name('expediente.current');
 Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create');
+Route::post('/expediente/crear', 'ExpedienteController@store')->name('expediente.store');
+Route::get('/expediente/ver/{id}', 'ExpedienteController@view')->name('expediente.view');
+Route::post('/expediente/update', 'ExpedienteController@update')->name('expediente.update');
 
 Route::get('/filtros', 'FilterController@index')->name('filter.index');
 Route::get('/filtro/crear', 'FilterController@create')->name('filter.create');

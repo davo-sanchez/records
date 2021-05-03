@@ -1,7 +1,9 @@
 .edit-row-btn {
     display: none;
+    float: right;
+    z-index: 33;
 }
 
 .table-row:hover td a.edit-row-btn {
-    display: block;
+    display: inline;
 }

@@ -31,8 +31,6 @@ class CreateExpedientesTable extends Migration
             $table->bigInteger('num_hojas');
             $table->string('observaciones');
             $table->date('fecha_obs');
-            $table->dateTime('fecha_alta');
-            $table->dateTime('fecha_ult_mod');
             $table->unsignedBigInteger('creator_id')->nullable();
             $table->foreign('creator_id')->references('id')->on('users');
             $table->timestamps();

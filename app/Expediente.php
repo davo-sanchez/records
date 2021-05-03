@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\TipoExpediente;
 
 class Expediente extends Model
 {
-    protected $primaryKey = 'id_exp';
+    protected $primaryKey = 'expediente_id';
 
     protected $table = 'expedientes';
 
@@ -25,10 +26,10 @@ class Expediente extends Model
         'num_legajos',
         'num_hojas',
         'observaciones',
-        'fecha_obs',
-        'fecha_alta',
-        'fecha_ult_mod'
+        'fecha_obs'
     ];
 
-    public $timestamps = false;
+    public function tipo(){
+        return $this->hasOne('App\TipoExpediente','tipo_expediente_id','tipo_exp');
+    }
 }
