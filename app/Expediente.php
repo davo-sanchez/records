@@ -38,4 +38,8 @@ class Expediente extends Model
     public function tipo(){
         return $this->hasOne('App\TipoExpediente','tipo_expediente_id','tipo_exp');
     }
+
+    public function creator(){
+        return $this->hasOne('App\User','id','creator_id');
+    }
 }
