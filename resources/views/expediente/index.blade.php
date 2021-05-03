@@ -26,36 +26,34 @@
 
  <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Historial Completo</h6>
+        <h6 class="m-0 font-weight-bold text-primary">{{ $title }}</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="example" width="100%" cellspacing="0" style="font-size: 15px">
                 <thead>
                     <tr>
-                        <th>Tipo</th>
                         <th>Caja</th>
-                        <th>Clave</th>
-                        <th>Nombre</th>
-                        <th>Periodo</th>
-                        <th>Tiempo/Archivo</th>
+                        <th>N° Expediente</th>
+                        <th>Año</th>
+                        <th>Partes</th>
+                        <th>Estado Procesal</th>
                         <th>Legajos</th>
                         <th>Hojas</th>
-                        <th>Observaciones</th>
+                        <th>Amparo</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($expedientes as $e)
-                        <tr class="table-row">
-                            <td>{{ $e->tipo->nombre_tipo_expediente }}</td>
+                        <tr class="table-row">                                                        
                             <td>{{ $e->num_caja }}</td>
-                            <td>{{ $e->num_exp.'-'.$e->ano."/XVI/".$e->adicional }}</td>
-                            <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
+                            <td>{{ $e->num_exp.'/'.$e->ano."/$e->n_junta/" }}</td>
                             <td>{{ $e->ano }}</td>
-                            <td>{{ $e->tiempo_archivo }}</td>
+                            <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
+                            <td>{{ $e->tipo->nombre_tipo_expediente }}</td>
                             <td>{{ $e->num_legajos }}</td>
                             <td>{{ $e->num_hojas }}</td>
-                            <td>{{ $e->observaciones }}
+                            <td>{{ $e->amparo }}
                             <a href="{{ route('expediente.view', ['id' => $e->expediente_id]) }}" class="edit-row-btn"> 
                                 <i class="far fa-edit"></i>
                             </a>

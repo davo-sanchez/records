@@ -16,8 +16,7 @@ class CreateExpedientesTable extends Migration
         Schema::create('expedientes', function (Blueprint $table) {
             $table->bigIncrements('expediente_id');
             $table->string('num_caja',15);
-            $table->unsignedBigInteger('tipo_exp')->nullable();
-            $table->foreign('tipo_exp')->references('tipo_expediente_id')->on('tipos_expedientes');
+            $table->unsignedBigInteger('tipo_exp');
             $table->bigInteger('num_exp');
             $table->string('n_junta');
             $table->string('ano');
@@ -32,7 +31,8 @@ class CreateExpedientesTable extends Migration
             $table->string('observaciones');
             $table->date('fecha_obs');
             $table->unsignedBigInteger('creator_id')->nullable();
-            $table->foreign('creator_id')->references('id')->on('users');
+            $table->boolean('amparo')->default(0);
+            $table->boolean('cerrado')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

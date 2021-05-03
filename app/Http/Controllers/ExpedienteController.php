@@ -18,16 +18,12 @@ class ExpedienteController extends Controller
     }
 
     public function index(){
-
-        /*$expedientes = DB::table('expedientes')
-                        ->join('tipos_expedientes','expedientes.tipo_exp','=','tipos_expedientes.tipo_expediente_id')
-                        ->get();*/
         
         $expedientes = Expediente::all();                
 
-        return view('expediente.index', [
-            'expedientes' => $expedientes
-        ]);
+        $title = 'Historial Completo';
+
+        return view('expediente.index', compact('expedientes','title'));
     }
 
     public function currentYear(){
@@ -36,9 +32,9 @@ class ExpedienteController extends Controller
         
         $expedientes = Expediente::Where('ano','=', $year)->get();
 
-        return view('expediente.index', [
-            'expedientes' => $expedientes
-        ]);
+        $title = 'Año Actual';
+
+        return view('expediente.index', compact('expedientes','title'));
     }
 
     public function create(){
