@@ -52,7 +52,7 @@ class ExpedienteController extends Controller
             'num_caja' => ucwords($request->num_caja),
             'tipo_exp' => ucwords($request->tipo_exp),
             'num_exp' => ucwords($request->num_exp),
-            'n_junta' => mb_strtoupper($request->n_junta),
+            'n_junta' => 'XVI',
             'ano' => $request->ano,
             'adicional' => mb_strtoupper($request->adicional),
             'actor' => ucwords($request->actor),

@@ -3,7 +3,6 @@
 @section('title', 'Expediente')    
 
 @section('content')
-<div class="container-fluid">
 
   @if (session('status'))
 
@@ -20,7 +19,8 @@
   @endif
 
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-0">
+          <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
             <div class="card">
                 <div class="card-header">
                   <h6 class="m-0 font-weight-bold text-primary">Expediente creado por: {{ $expediente->creator->name }}</h6>
@@ -139,6 +139,5 @@
             </div>
         </div>
     </div>
-</div>
 
 @endsection
