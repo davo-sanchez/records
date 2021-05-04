@@ -30,30 +30,45 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="example" width="100%" cellspacing="0" style="font-size: 15px">
+            <table class="table table-bordered" id="example" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Caja</th>
-                        <th>N° Expediente</th>
-                        <th>Año</th>
-                        <th>Partes</th>
-                        <th>Estado Procesal</th>
-                        <th>Legajos</th>
-                        <th>Hojas</th>
+                        <th>#</th>
+                        <th>Tipo</th>
+                        <th>#Expediente</th>
+                        <th>Actor</th>
+                        <th>Demandado</th>
+                        <th>Concepto</th>
+                        <th>Procedencia</th>
+                        <th>Fecha Apertura</th>
+                        <th>Fecha Cierre</th>
+                        <th>#Hojas</th>
+                        <th>Carácter de la Información</th>
+                        <th>Ubicación</th>
                         <th>Amparo</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="font-size: 12px">
                     @foreach ($expedientes as $e)
                         <tr class="table-row">                                                        
-                            <td>{{ $e->num_caja }}</td>
-                            <td>{{ $e->num_exp.'/'.$e->ano."/$e->n_junta/" }}</td>
-                            <td>{{ $e->ano }}</td>
-                            <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
+                            <td>{{ $loop->index+1 }}</td>
                             <td>{{ $e->tipo->nombre_tipo_expediente }}</td>
-                            <td>{{ $e->num_legajos }}</td>
-                            <td>{{ $e->num_hojas }}</td>
-                            <td>{{ $e->amparo }}
+                            <td>{{ $e->num_exp.'/'.$e->n_junta.'/'.$e->ano }}</td>
+                            <td>{{ $e->actor }}</td>
+                            <td>{{ $e->demandado }}</td>
+                            <td>{{ $e->concepto }}</td>
+                            <td>{{ $e->procedencia }}</td>
+                            <td>{{ $e->fecha_apertura }}</td>
+                            <td>{{ $e->fecha_cierre }}</td>                            
+                            <td>{{ $e->num_hojas }}</td>                            
+                            <td>Pública</td>
+                            <td>{{ $e->n_caja }}</td>
+                            <td>
+                                @if($e->amparo == 0)
+                                    NO
+                                        @else
+                                            SI
+                                @endif
                             <a href="{{ route('expediente.view', ['id' => $e->expediente_id]) }}" class="edit-row-btn"> 
                                 <i class="far fa-edit"></i>
                             </a>

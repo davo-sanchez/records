@@ -121,4 +121,20 @@ class ExpedienteController extends Controller
         return view('expediente.trashbin', compact('expedientes'));
     }
 
+    public function dead(){
+        $expedientes = Expediente::where('cerrado','=',1)->get();
+
+        $title = 'Archivo Muerto';
+
+        return view('expediente.index', compact('expedientes','title'));
+    }
+
+    public function live(){
+        $expedientes = Expediente::where('cerrado','=',0)->get();
+
+        $title = 'Archivo Activo';
+
+        return view('expediente.index', compact('expedientes','title'));
+    }
+
 }

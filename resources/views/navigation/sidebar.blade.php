@@ -38,6 +38,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Filtros</h6>
                 <a class="collapse-item" href="{{ route('expediente.current') }}">Año Actual</a>
+                <a class="collapse-item" href="{{ route('expediente.live') }}">Archivo Activo</a>
+                <a class="collapse-item" href="{{ route('expediente.dead') }}">Archivo Muerto</a>
                 <a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Historial completo</a>
             </div>
         </div>
