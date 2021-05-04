@@ -6,12 +6,10 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    @include('layouts.top-form-search')
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
-        @include('layouts.topxs-form-search')
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
