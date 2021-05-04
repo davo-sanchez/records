@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Historial Completo de Expedientes')
+@section('title', $title)
 
 @section('css-datatables')
     @include('layouts.css.css-datatables')
@@ -22,7 +22,9 @@
   </div>
 @endif
 
+@can('expedientes.create')
 <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+@endcan
 
  <div class="card shadow mb-4">
     <div class="card-header py-3">

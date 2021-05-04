@@ -30,8 +30,6 @@ class UpdateUserRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required'],
         ];
     }
@@ -41,15 +39,6 @@ class UpdateUserRequest extends FormRequest
             'name.required'    => 'El nombre es requerido',
             'name.string'    => 'El nombre no es válido',
             'name.max'    => 'El nombre es demasiado largo (255 máx.)',
-            'email.required'    => 'El correo es requerido',
-            'email.string'    => 'El correo no es válido',
-            'email.email'    => 'El correo no es válido',
-            'email.max'    => 'El correo es demasiado largo (255 máx.)',
-            'email.unique'    => 'El correo ya está registrado',
-            'password.required'    => 'La contraseña es requerida',
-            'password.string'    => 'La contraseña no es válida',
-            'password.min'    => 'La contraseña es demasiado corta (8 Min.)',
-            'password.confirmed'    => 'Las contraseñas no coinciden',
             'role.required' => 'El rol es requerido'
         ];
     }

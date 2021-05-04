@@ -4,38 +4,24 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        
-        <div class="col-md-4">
+    <div class="row justify-content-center">
+
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <div class="card">
                 <div class="card-header">
-                    <h6 class="m-0 font-weight-bold text-primary">Rol: {{ $role->name }}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Permisos de Rol: {{ $role->name }}</h6>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="{{ route('role.store') }}">
+                  <form method="POST" action="">
                     @csrf
+
                     <div class="form-group">
                       <label for="name">Nombre</label>
                       <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelp" value="{{ $role->name }}">
                       <div class="invalid-feedback">@error('name') {{ $message }} @enderror</div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                  </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="m-0 font-weight-bold text-primary">Permisos</h6>
-                </div>
-                <div class="card-body">
-                  <form method="POST" action="{{ route('role.store') }}">
-                    @csrf
-
-                    <div class="row">
+                    <div class="row p-3">
                       <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-0">
                         <fieldset>
                           <legend>Expedientes</legend> 

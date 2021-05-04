@@ -20,7 +20,9 @@
 
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-0">
+          @can('expedientes.create')
           <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+          @endcan
             <div class="card">
                 <div class="card-header">
                   <h6 class="m-0 font-weight-bold text-primary">Expediente creado por: {{ $expediente->creator->name }}</h6>
@@ -131,9 +133,12 @@
                       <input type="date" class="form-control @error('fecha_obs') is-invalid @enderror" name="fecha_obs" id="fecha_obs" aria-describedby="fecha_obsHelp" value="{{ $expediente->fecha_obs }}">
                       <div class="invalid-feedback">@error('fecha_obs') {{ $message }} @enderror</div>
                     </div>
-
+                    @can('expedientes.create')
                     <button type="submit" class="btn btn-primary">Actualizar</button>
+                    @endcan
+                    @can('expedientes.destroy')
                     <button type="submit" form="expfromdelete" class="btn btn-danger">Eliminar</button>
+                    @endcan
                   </form>
                 </div>
             </div>

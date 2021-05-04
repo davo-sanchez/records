@@ -59,14 +59,14 @@ class PermissionsTableSeeder extends Seeder
         //Rol consultor
         $consultor = Role::create(['name' => 'Consultor']);
 
-        $guest->givePermissionTo([
+        $consultor->givePermissionTo([
             'expedientes.select',
         ]);
 
         //Capturista
-        $consultor = Role::create(['name' => 'Capturista']);
+        $capturista = Role::create(['name' => 'Capturista']);
 
-        $consultor->givePermissionTo([
+        $capturista->givePermissionTo([
             'expedientes.select',
             'expedientes.edit',
             'expedientes.create',

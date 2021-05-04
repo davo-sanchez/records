@@ -17,14 +17,35 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+/****************
+ * Expedientes 
+ * ****************/
 
-Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index');
-Route::get('/expedientes/actual', 'ExpedienteController@currentYear')->name('expediente.current');
-Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create');
-Route::post('/expediente/crear', 'ExpedienteController@store')->name('expediente.store');
-Route::get('/expediente/ver/{id}', 'ExpedienteController@view')->name('expediente.view');
-Route::post('/expediente/update', 'ExpedienteController@update')->name('expediente.update');
-Route::post('/expediente/delete', 'ExpedienteController@delete')->name('expediente.delete');
-Route::get('/expediente/papelera', 'ExpedienteController@trashbin')->name('expediente.trashbin');
-Route::get('/expediente/muerto', 'ExpedienteController@dead')->name('expediente.dead');
-Route::get('/expediente/activo', 'ExpedienteController@live')->name('expediente.live');
+Route::get('/expedientes', 'ExpedienteController@index')->name('expediente.index')->middleware('permission:expedientes.select');
+Route::get('/expedientes/actual', 'ExpedienteController@currentYear')->name('expediente.current')->middleware('permission:expedientes.select');
+Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente.create')->middleware('permission:expedientes.create');
+Route::post('/expediente/crear', 'ExpedienteController@store')->name('expediente.store')->middleware('permission:expedientes.create');
+Route::get('/expediente/ver/{id}', 'ExpedienteController@view')->name('expediente.view')->middleware('permission:expedientes.select');
+Route::post('/expediente/update', 'ExpedienteController@update')->name('expediente.update')->middleware('permission:expedientes.edit');
+Route::post('/expediente/delete', 'ExpedienteController@delete')->name('expediente.delete')->middleware('permission:expedientes.destroy');
+Route::get('/expediente/papelera', 'ExpedienteController@trashbin')->name('expediente.trashbin')->middleware('permission:expedientes.trashbin');
+Route::get('/expediente/muerto', 'ExpedienteController@dead')->name('expediente.dead')->middleware('permission:expedientes.select');
+Route::get('/expediente/activo', 'ExpedienteController@live')->name('expediente.live')->middleware('permission:expedientes.select');
+
+
+/****************
+ * Usuarios 
+ * ****************/
+
+ Route::get('/users','UserController@index')->name('user.index');
+ Route::post('/user/update','UserController@update')->name('user.update');
+ Route::get('/user/view/{id}','UserController@view')->name('user.view');
+
+
+ /****************
+ * Roles 
+ * ****************/
+
+ Route::get('/roles','RoleController@index')->name('role.index');
+ Route::get('/role/create','RoleController@create')->name('role.create');
+ Route::get('/role/view/{id}','RoleController@view')->name('role.view');

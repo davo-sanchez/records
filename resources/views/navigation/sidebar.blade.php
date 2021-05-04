@@ -43,11 +43,20 @@
                 <a class="collapse-item bg-primary text-white" href="{{ route('expediente.index') }}">Historial completo</a>
             </div>
         </div>
+        @can('expedientes.create')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('expediente.create') }}">
+                <i class="fas fa-fw fa-plus"></i>
+                <span>Nuevo</span></a>
+        </li>
+        @endcan
+        @can('expedientes.trashbin')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('expediente.trashbin') }}">
                 <i class="fas fa-fw fa-trash"></i>
                 <span>Papelera</span></a>
         </li>
+        @endcan
     </li>
 
     <!-- Nav Item - Charts -->
@@ -74,8 +83,8 @@
         </a>
         <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Ver Todos</a>
-                <a class="collapse-item" href="">Nuevo Usuario</a>
+                <a class="collapse-item" href="{{ route('user.index') }}">Ver Todos</a>
+                <a class="collapse-item" href="{{ route('register') }}">Nuevo Usuario</a>
             </div>
         </div>
     </li>
@@ -88,7 +97,7 @@
         </a>
         <div id="collapseRoles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Ver Todos</a>
+                <a class="collapse-item" href="{{ route('role.index') }}">Ver Todos</a>
                 <a class="collapse-item" href="">Nuevo Rol</a>
             </div>
         </div>
