@@ -67,6 +67,7 @@
     </li>-->
 
     <!-- Divider -->
+    @role('Administrador')
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -102,7 +103,7 @@
             </div>
         </div>
     </li>
-
+    @endrole
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

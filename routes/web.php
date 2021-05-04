@@ -37,15 +37,15 @@ Route::get('/expediente/activo', 'ExpedienteController@live')->name('expediente.
  * Usuarios 
  * ****************/
 
- Route::get('/users','UserController@index')->name('user.index');
- Route::post('/user/update','UserController@update')->name('user.update');
- Route::get('/user/view/{id}','UserController@view')->name('user.view');
+ Route::get('/users','UserController@index')->name('user.index')->middleware('role:administrador');
+ Route::post('/user/update','UserController@update')->name('user.update')->middleware('role:administrador');
+ Route::get('/user/view/{id}','UserController@view')->name('user.view')->middleware('role:administrador');
 
 
  /****************
  * Roles 
  * ****************/
 
- Route::get('/roles','RoleController@index')->name('role.index');
- Route::get('/role/create','RoleController@create')->name('role.create');
- Route::get('/role/view/{id}','RoleController@view')->name('role.view');
+ Route::get('/roles','RoleController@index')->name('role.index')->middleware('role:administrador');
+ Route::get('/role/create','RoleController@create')->name('role.create')->middleware('role:administrador');
+ Route::get('/role/view/{id}','RoleController@view')->name('role.view')->middleware('role:administrador');
