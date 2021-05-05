@@ -89,20 +89,6 @@
             </div>
         </div>
     </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRoles"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-shield-alt"></i>
-            <span>Roles</span>
-        </a>
-        <div id="collapseRoles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('role.index') }}">Ver Todos</a>
-                <a class="collapse-item" href="">Nuevo Rol</a>
-            </div>
-        </div>
-    </li>
     @endrole
 
     <!-- Sidebar Toggler (Sidebar) -->

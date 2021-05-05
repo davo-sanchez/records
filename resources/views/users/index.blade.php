@@ -19,27 +19,27 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered text-center" id="example" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Rol</th>
-                        <th>*</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="font-size: 12px">
                     @foreach ($users as $user)
-                        <tr>
+                        <tr class="table-row">
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
                                 @foreach ($user->roles as $user_role)
                                     {{ $user_role->name }}
                                 @endforeach
-                            </td>
-                            <td>
-                                <a href="{{ route('user.view' ,['id' => $user->id]) }}"><i class="fas fa-edit"></i></a>
+
+                                <a href="{{ route('user.view' ,['id' => $user->id]) }}" class="edit-row-btn">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
