@@ -9,6 +9,7 @@ use App\Http\Requests\ExpedienteCreateRequest;
 use App\Http\Requests\ExpedienteUpdateRequest;
 use App\Expediente;
 use App\TipoExpediente;
+use App\Log;
 
 class ExpedienteController extends Controller
 {
@@ -67,6 +68,11 @@ class ExpedienteController extends Controller
             'creator_id' => Auth::user()->id
             ]);
 
+            Log::create([
+                'user_id' => Auth::user()->id,
+                'message' => 'Creación de expediente'
+            ]);
+
         return redirect()->route('expediente.create')->with('status', $expediente);
 
     }
@@ -103,6 +109,11 @@ class ExpedienteController extends Controller
 
         $expediente->save();
 
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'message' => 'Actualizó el expediente'
+        ]);
+
         return redirect()->route('expediente.view', ['id' => $request->expid])->with('status', '¡Expediente Actualizado!');
 
     }
@@ -110,6 +121,11 @@ class ExpedienteController extends Controller
     public function delete(Request $request){
 
         Expediente::findOrFail($request->expid)->delete();
+
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'message' => 'Envió a la papelera el expediente'
+        ]);
 
         return redirect()->route('expediente.index')->with('status','¡Expediente Eliminado!');
 
