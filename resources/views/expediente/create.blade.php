@@ -129,7 +129,12 @@
                       <div class="invalid-feedback">@error('fecha_cierre') {{ $message }} @enderror</div>
                     </div>
 
-                    
+                    <div class="form-check pb-3">
+                      <input class="form-check-input" type="checkbox" value="checked" id="amparo" name="amparo">
+                      <label class="form-check-label" for="amparo">
+                        ¿Tiene Amparo?
+                      </label>
+                    </div>
 
                     <button type="submit" class=" mb-3 btn btn-primary btn-icon-split">
                       <span class="icon text-white-50">

@@ -49,6 +49,8 @@ class ExpedienteController extends Controller
 
     public function store(ExpedienteCreateRequest $request){
 
+        $amparo = $request->amparo == 'checked' ? 1 : 0;
+
         $expediente = DB::table('expedientes')->insertGetId([
             'num_caja' => ucwords($request->num_caja),
             'tipo_exp' => ucwords($request->tipo_exp),
@@ -67,17 +69,18 @@ class ExpedienteController extends Controller
             'fecha_apertura' => $request->fecha_apertura,
             'fecha_cierre' => $request->fecha_cierre,
             'creator_id' => Auth::user()->id,
-            'aparo' => '',
+            'amparo' => $amparo,
             'cerrado' => 0
             ]);
 
-            Log::create([
-                'user_id' => Auth::user()->id,
-                'message' => 'Creación de expediente'
-            ]);
-
-        return redirect()->route('expediente.create')->with('status', $expediente);
-
+            if($expediente) {
+                Log::create([
+                    'user_id' => Auth::user()->id,
+                    'message' => 'Creación de expediente'
+                ]);
+                
+            }       
+            return redirect()->route('expediente.create')->with('status', $expediente);
     }
 
     public function view($id){
@@ -94,6 +97,8 @@ class ExpedienteController extends Controller
 
         $expediente = Expediente::find($request->expid);
 
+        $amparo = $request->amparo == 'checked' ? 1 : 0;
+
         $expediente->num_caja = $request->num_caja;
         $expediente->tipo_exp = $request->tipo_exp;
         $expediente->num_exp = $request->num_exp;
@@ -108,7 +113,9 @@ class ExpedienteController extends Controller
         $expediente->num_legajos = $request->num_legajos;
         $expediente->num_hojas = $request->num_hojas;
         $expediente->observaciones = $request->observaciones;
-        $expediente->fecha_obs = $request->fecha_obs;
+        $expediente->fecha_apertura = $request->fecha_apertura;
+        $expediente->fecha_cierre = $request->fecha_cierre;
+        $expediente->amparo = $amparo;
 
         $expediente->save();
 

@@ -128,17 +128,29 @@
 
                     <div class="form-group">
                       <label for="observaciones">Observaciones</label>
-                      <textarea class="form-control @error('observaciones') is-invalid @enderror" name="observaciones" id="observaciones" rows="4">
-                        {{ $expediente->observaciones }}
-                      </textarea>
+                      <textarea class="form-control @error('observaciones') is-invalid @enderror" name="observaciones" id="observaciones" rows="4">{{ $expediente->observaciones }}</textarea>
                       <div class="invalid-feedback">@error('observaciones') {{ $message }} @enderror</div>
                     </div>
 
                     <div class="form-group">
-                      <label for="fecha_obs">Fecha de referencia</label>
-                      <input type="date" class="form-control @error('fecha_obs') is-invalid @enderror" name="fecha_obs" id="fecha_obs" aria-describedby="fecha_obsHelp" value="{{ $expediente->fecha_obs }}">
-                      <div class="invalid-feedback">@error('fecha_obs') {{ $message }} @enderror</div>
+                      <label for="fecha_apertura">Fecha de apertura</label>
+                      <input type="date" class="form-control @error('fecha_apertura') is-invalid @enderror" name="fecha_apertura" id="fecha_apertura" aria-describedby="fecha_aperturaHelp" value="{{ $expediente->fecha_apertura }}">
+                      <div class="invalid-feedback">@error('fecha_apertura') {{ $message }} @enderror</div>
                     </div>
+
+                    <div class="form-group">
+                      <label for="fecha_cierre">Fecha de cierre</label>
+                      <input type="date" class="form-control @error('fecha_cierre') is-invalid @enderror" name="fecha_cierre" id="fecha_cierre" aria-describedby="fecha_cierreHelp" value="{{ $expediente->fecha_cierre }}">
+                      <div class="invalid-feedback">@error('fecha_cierre') {{ $message }} @enderror</div>
+                    </div>
+
+                    <div class="form-check pb-3">
+                      <input class="form-check-input" type="checkbox" @if($expediente->amparo) checked @endif value="checked" id="amparo" name="amparo">
+                      <label class="form-check-label" for="amparo">
+                        ¿Tiene Amparo?
+                      </label>
+                    </div>
+
                     @can('expedientes.create')
                     <button type="submit" class="btn btn-success btn-icon-split">
                       <span class="icon text-white-50">

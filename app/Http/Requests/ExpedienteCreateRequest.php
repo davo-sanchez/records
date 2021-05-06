@@ -29,7 +29,7 @@ class ExpedienteCreateRequest extends FormRequest
             'num_exp' => 'required',
             'n_junta' => 'required',
             'ano' => 'required',
-            'adicional' => 'required',
+            'adicional' => 'nullable',
             'actor' => 'required',
             'demandado' => 'required',
             'concepto' => 'required',
@@ -37,8 +37,9 @@ class ExpedienteCreateRequest extends FormRequest
             'tiempo_archivo' => 'required',
             'num_legajos' => 'required',
             'num_hojas' => 'required',
-            'observaciones' => 'required',
-            'fecha_obs' => 'required',
+            'observaciones' => 'nullable',
+            'fecha_apertura' => 'required|date',
+            'fecha_cierre' => 'nullable|date',
         ];
     }
 
@@ -58,7 +59,9 @@ class ExpedienteCreateRequest extends FormRequest
             'num_legajos.required' => 'Este campo es requerido',
             'num_hojas.required' => 'Este campo es requerido',
             'observaciones.required' => 'Este campo es requerido',
-            'fecha_obs.required' => 'Este campo es requerido',
+            'fecha_apertura.required' => 'Este campo es requerido',
+            'fecha_apertura.date' => 'Este campo no es una fecha válida',
+            'fecha_cierre.date' => 'Este campo no es una fecha válida',
         ];
     }
 }
