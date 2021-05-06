@@ -29,8 +29,11 @@ class Expediente extends Model
         'num_legajos',
         'num_hojas',
         'observaciones',
-        'fecha_obs',
-        'creator_id'
+        'fecha_apertura',
+        'fecha_cierre',
+        'creator_id',
+        'amparo',
+        'cerrado'
     ];
 
     protected $dates = ['deleted_at'];

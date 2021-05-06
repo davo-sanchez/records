@@ -118,10 +118,18 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="fecha_obs">Fecha de referencia</label>
-                      <input type="date" class="form-control @error('fecha_obs') is-invalid @enderror" name="fecha_obs" id="fecha_obs" aria-describedby="fecha_obsHelp" value="{{ old('fecha_obs') }}">
-                      <div class="invalid-feedback">@error('fecha_obs') {{ $message }} @enderror</div>
+                      <label for="fecha_apertura">Fecha de apertura</label>
+                      <input type="date" class="form-control @error('fecha_apertura') is-invalid @enderror" name="fecha_apertura" id="fecha_apertura" aria-describedby="fecha_aperturaHelp" value="{{ old('fecha_apertura') }}">
+                      <div class="invalid-feedback">@error('fecha_apertura') {{ $message }} @enderror</div>
                     </div>
+
+                    <div class="form-group">
+                      <label for="fecha_cierre">Fecha de cierre</label>
+                      <input type="date" class="form-control @error('fecha_cierre') is-invalid @enderror" name="fecha_cierre" id="fecha_cierre" aria-describedby="fecha_cierreHelp" value="{{ old('fecha_cierre') }}">
+                      <div class="invalid-feedback">@error('fecha_cierre') {{ $message }} @enderror</div>
+                    </div>
+
+                    
 
                     <button type="submit" class=" mb-3 btn btn-primary btn-icon-split">
                       <span class="icon text-white-50">

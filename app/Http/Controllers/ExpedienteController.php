@@ -64,8 +64,11 @@ class ExpedienteController extends Controller
             'num_legajos' => $request->num_legajos,
             'num_hojas' => $request->num_hojas,
             'observaciones' => ucwords($request->observaciones),
-            'fecha_obs' => $request->fecha_obs,
-            'creator_id' => Auth::user()->id
+            'fecha_apertura' => $request->fecha_apertura,
+            'fecha_cierre' => $request->fecha_cierre,
+            'creator_id' => Auth::user()->id,
+            'aparo' => '',
+            'cerrado' => 0
             ]);
 
             Log::create([
