@@ -7,3 +7,7 @@
 .table-row:hover td a.edit-row-btn {
     display: inline;
 }
+
+.form-delete-restore {
+    display: inline;
+}

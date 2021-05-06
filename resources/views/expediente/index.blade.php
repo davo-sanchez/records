@@ -23,7 +23,12 @@
 @endif
 
 @can('expedientes.create')
-<a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+<a href="{{ route('expediente.create') }}" class=" mb-3 btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Nuevo</span>
+</a>
 @endcan
 
  <div class="card shadow mb-4">

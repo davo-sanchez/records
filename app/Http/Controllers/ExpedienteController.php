@@ -153,4 +153,20 @@ class ExpedienteController extends Controller
         return view('expediente.index', compact('expedientes','title'));
     }
 
+    public function restore(Request $request){
+
+        Expediente::withTrashed()->where('expediente_id', $request->expid)->restore();
+
+        return back();
+
+    }
+
+    public function destroy(Request $request){
+
+        DB::table('expedientes')->where('expediente_id','=',$request->expid)->delete();
+
+        return back();
+
+    }
+
 }

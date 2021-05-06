@@ -123,7 +123,12 @@
                       <div class="invalid-feedback">@error('fecha_obs') {{ $message }} @enderror</div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class=" mb-3 btn btn-primary btn-icon-split">
+                      <span class="icon text-white-50">
+                          <i class="fas fa-save"></i>
+                      </span>
+                      <span class="text">Guardar</span>
+                    </button>
                   </form>
                 </div>
             </div>

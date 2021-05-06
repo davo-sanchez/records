@@ -22,7 +22,14 @@
   </div>
 @endif
 
-<a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+@can('expedientes.create')
+<a href="{{ route('expediente.create') }}" class=" mb-3 btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Nuevo</span>
+</a>
+@endcan
 
  <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -30,7 +37,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="example" width="100%" cellspacing="0" style="font-size: 15px">
+            <table class="table table-bordered text-center" width="100%" cellspacing="0" style="font-size: 15px">
                 <thead>
                     <tr>
                         <th>Tipo</th>
@@ -38,10 +45,7 @@
                         <th>Clave</th>
                         <th>Nombre</th>
                         <th>Periodo</th>
-                        <th>Tiempo/Archivo</th>
-                        <th>Legajos</th>
-                        <th>Hojas</th>
-                        <th>Observaciones</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,14 +55,22 @@
                             <td>{{ $e->num_caja }}</td>
                             <td>{{ $e->num_exp.'-'.$e->ano."/XVI/".$e->adicional }}</td>
                             <td>{{ $e->actor.' - VS - '.$e->demandado.' - '.$e->concepto.' - '.$e->procedencia }}</td>
-                            <td>{{ $e->ano }}</td>
-                            <td>{{ $e->tiempo_archivo }}</td>
-                            <td>{{ $e->num_legajos }}</td>
-                            <td>{{ $e->num_hojas }}</td>
-                            <td>{{ $e->observaciones }}
-                            <a href="{{ route('expediente.view', ['id' => $e->expediente_id]) }}" class="edit-row-btn"> 
-                                <i class="far fa-edit"></i>
-                            </a>
+                            <td>{{ $e->ano }}</td>                            
+                            <td>
+                                <form action="{{ route('expediente.restore') }}" method="POST" class="form-delete-restore">
+                                    @csrf
+                                    <input type="hidden" name="expid" value="{{ $e->expediente_id }}">
+                                    <button class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </form>
+                                <form action="{{ route('expediente.destroy') }}" method="POST" class="form-delete-restore">
+                                    @csrf
+                                    <input type="hidden" name="expid" value="{{ $e->expediente_id }}">
+                                    <button class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

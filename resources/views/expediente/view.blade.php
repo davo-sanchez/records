@@ -21,7 +21,13 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-0">
           @can('expedientes.create')
-          <a href="{{ route('expediente.create') }}" class="mb-3 btn btn-primary">Nuevo</a>
+
+          <a href="href="{{ route('expediente.create') }}"" class=" mb-3 btn btn-primary btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Nuevo</span>
+        </a>
           @endcan
             <div class="card">
                 <div class="card-header">
@@ -134,10 +140,16 @@
                       <div class="invalid-feedback">@error('fecha_obs') {{ $message }} @enderror</div>
                     </div>
                     @can('expedientes.create')
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-success btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Actualizar</span>
+                    </button>
                     @endcan
                     @can('expedientes.destroy')
-                    <button type="submit" form="expfromdelete" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" form="expfromdelete" class="btn btn-outline-danger">
+                      Enviar a papelera
                     @endcan
                   </form>
                 </div>

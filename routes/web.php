@@ -27,11 +27,11 @@ Route::get('/expediente/crear', 'ExpedienteController@create')->name('expediente
 Route::post('/expediente/crear', 'ExpedienteController@store')->name('expediente.store')->middleware('permission:expedientes.create');
 Route::get('/expediente/ver/{id}', 'ExpedienteController@view')->name('expediente.view')->middleware('permission:expedientes.select');
 Route::post('/expediente/update', 'ExpedienteController@update')->name('expediente.update')->middleware('permission:expedientes.edit');
-Route::post('/expediente/delete', 'ExpedienteController@delete')->name('expediente.delete')->middleware('permission:expedientes.destroy');
 Route::get('/expediente/papelera', 'ExpedienteController@trashbin')->name('expediente.trashbin')->middleware('permission:expedientes.trashbin');
 Route::get('/expediente/muerto', 'ExpedienteController@dead')->name('expediente.dead')->middleware('permission:expedientes.select');
 Route::get('/expediente/activo', 'ExpedienteController@live')->name('expediente.live')->middleware('permission:expedientes.select');
-
+Route::post('/expediente/restaurar','ExpedienteController@restore')->name('expediente.restore')->middleware('permission:expedientes.restore');
+Route::post('/expediente/destruir', 'ExpedienteController@destroy')->name('expediente.destroy')->middleware('permission:expedientes.destroy');
 
 /****************
  * Usuarios 
