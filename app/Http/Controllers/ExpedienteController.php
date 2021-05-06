@@ -127,7 +127,7 @@ class ExpedienteController extends Controller
             'message' => 'Envió a la papelera el expediente'
         ]);
 
-        return redirect()->route('expediente.index')->with('status','¡Expediente Eliminado!');
+        return redirect()->route('expediente.index')->with('status','¡Expediente Enviado a la Papelera!');
 
     }
 

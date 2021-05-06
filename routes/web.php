@@ -31,6 +31,7 @@ Route::get('/expediente/papelera', 'ExpedienteController@trashbin')->name('exped
 Route::get('/expediente/muerto', 'ExpedienteController@dead')->name('expediente.dead')->middleware('permission:expedientes.select');
 Route::get('/expediente/activo', 'ExpedienteController@live')->name('expediente.live')->middleware('permission:expedientes.select');
 Route::post('/expediente/restaurar','ExpedienteController@restore')->name('expediente.restore')->middleware('permission:expedientes.restore');
+Route::post('/expediente/delete','ExpedienteController@delete')->name('expediente.delete')->middleware('permission:expedientes.trashbin');
 Route::post('/expediente/destruir', 'ExpedienteController@destroy')->name('expediente.destroy')->middleware('permission:expedientes.destroy');
 
 /****************

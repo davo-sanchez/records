@@ -22,7 +22,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 p-0">
           @can('expedientes.create')
 
-          <a href="href="{{ route('expediente.create') }}"" class=" mb-3 btn btn-primary btn-icon-split">
+          <a href="{{ route('expediente.create') }}" class=" mb-3 btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
