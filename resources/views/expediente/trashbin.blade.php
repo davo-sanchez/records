@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Historial Completo de Expedientes')
+@section('title', 'Expedientes en Papelera')
 
 @section('css-datatables')
     @include('layouts.css.css-datatables')
@@ -37,7 +37,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered text-center" width="100%" cellspacing="0" style="font-size: 15px">
+            <table class="table table-bordered text-center" id="tabletrashbin" width="100%" cellspacing="0" style="font-size: 15px">
                 <thead>
                     <tr>
                         <th>Tipo</th>
