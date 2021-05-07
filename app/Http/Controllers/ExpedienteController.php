@@ -70,7 +70,7 @@ class ExpedienteController extends Controller
             'fecha_cierre' => $request->fecha_cierre,
             'creator_id' => Auth::user()->id,
             'amparo' => $amparo,
-            'cerrado' => 0
+            'cerrado' => !empty($request->fecha_cierre) ? 1 : 0
             ]);
 
             if($expediente) {
