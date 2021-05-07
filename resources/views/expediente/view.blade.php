@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-body">
 
-                  <form id="expfromdelete" style="display: none;" action="{{ route('expediente.delete') }}" method="POST">
+                  <form id="expformdelete" style="display: none;" action="{{ route('expediente.delete') }}" method="POST">
                     @csrf
                     <input type="hidden" name="expid" value="{{ $expediente->expediente_id }}">
                   </form>
@@ -151,18 +151,24 @@
                       </label>
                     </div>
 
-                    @can('expedientes.create')
-                    <button type="submit" class="btn btn-success btn-icon-split">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <span class="text">Actualizar</span>
-                    </button>
-                    @endcan
-                    @can('expedientes.destroy')
-                    <button type="submit" form="expfromdelete" class="btn btn-outline-danger">
-                      Enviar a papelera
-                    @endcan
+
+                    <div class="row">
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                        @can('expedientes.create')
+                        <button type="submit" class="btn btn-success btn-block">
+                          <i class="fas fa-sync"></i>
+                          Actualizar
+                        </button>
+                        @endcan
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                        @can('expedientes.destroy')
+                        <button type="submit" form="expformdelete" class="btn btn-outline-danger btn-block">
+                          <i class="fas fa-trash"></i>
+                          Enviar a papelera </button>
+                        @endcan
+                      </div>  
+                    </div>
                   </form>
                 </div>
             </div>

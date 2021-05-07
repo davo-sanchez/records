@@ -115,6 +115,7 @@ class ExpedienteController extends Controller
         $expediente->observaciones = $request->observaciones;
         $expediente->fecha_apertura = $request->fecha_apertura;
         $expediente->fecha_cierre = $request->fecha_cierre;
+        $expediente->cerrado = !empty($request->fecha_cierre) ? 1 : 0;
         $expediente->amparo = $amparo;
 
         $expediente->save();
