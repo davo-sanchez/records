@@ -76,8 +76,10 @@ class ExpedienteController extends Controller
             if($expediente) {
                 Log::create([
                     'user_id' => Auth::user()->id,
-                    'message' => 'Creación de expediente'
+                    'message' => 'Creación de expediente '.$request->num_exp.'/XVI/'.$request->ano
                 ]);
+
+                DB::table('tipos_expedientes')->where('tipo_expediente_id','=',$request->tipo_exp)->increment('count');
                 
             }       
             return redirect()->route('expediente.create')->with('status', $expediente);
@@ -122,7 +124,7 @@ class ExpedienteController extends Controller
 
         Log::create([
             'user_id' => Auth::user()->id,
-            'message' => 'Actualizó el expediente'
+            'message' => 'Actualizzación del expediente. '.$expediente->num_exp.'/XVI/'.$expediente->ano
         ]);
 
         return redirect()->route('expediente.view', ['id' => $request->expid])->with('status', '¡Expediente Actualizado!');
@@ -131,13 +133,20 @@ class ExpedienteController extends Controller
 
     public function delete(Request $request){
 
-        Expediente::findOrFail($request->expid)->delete();
+        $expediente = Expediente::findOrFail($request->expid);
 
-        Log::create([
-            'user_id' => Auth::user()->id,
-            'message' => 'Envió a la papelera el expediente'
-        ]);
 
+        if($expediente->delete()){
+            
+            Log::create([
+                'user_id' => Auth::user()->id,
+                'message' => 'Envío a la papelera del expediente '.$expediente->num_exp.'/XVI/'.$expediente->ano
+            ]);
+    
+            DB::table('tipos_expedientes')->where('tipo_expediente_id','=',$expediente->tipo_exp)->decrement('count');
+    
+        }
+        
         return redirect()->route('expediente.index')->with('status','¡Expediente Enviado a la Papelera!');
 
     }
@@ -168,13 +177,29 @@ class ExpedienteController extends Controller
 
         Expediente::withTrashed()->where('expediente_id', $request->expid)->restore();
 
+        $expediente = Expediente::findOrFail($request->expid);
+
+        DB::table('tipos_expedientes')->where('tipo_expediente_id','=',$expediente->tipo_exp)->increment('count');
+
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'message' => 'Restauración del expediente '.$expediente->num_exp.'/XVI/'.$expediente->ano
+        ]);
+
         return back();
 
     }
 
     public function destroy(Request $request){
 
+        $expediente = Expediente::withTrashed()->find($request->expid);
+
         DB::table('expedientes')->where('expediente_id','=',$request->expid)->delete();
+
+        Log::create([
+            'user_id' => Auth::user()->id,
+            'message' => 'Eliminación permanente del expediente '.$expediente->num_exp.'/XVI/'.$expediente->ano
+        ]);
 
         return back();
 

@@ -10,4 +10,8 @@ class Log extends Model
         'user_id',
         'message'
     ];
+
+    public function user(){
+        return $this->hasOne('App\User','id','user_id');
+    }
 }

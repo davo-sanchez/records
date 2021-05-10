@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Log;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tipos = DB::table('tipos_expedientes')->select('nombre_tipo_expediente', 'count')->get();
+
+        $logs = Log::paginate(5);
+
+        return view('home', compact('tipos','logs'));
     }
 }
