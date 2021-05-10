@@ -8,20 +8,6 @@
 
 @section('content')
 
-@if (session('status'))
-
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-      <div class="alert alert-danger" role="alert">
-        <a href="{{ route('expediente.trashbin') }}" class="alert-link">{{ session('status') }}</a>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-  </div>
-@endif
-
 @can('expedientes.create')
 <a href="{{ route('expediente.create') }}" class=" mb-3 btn btn-primary btn-icon-split">
     <span class="icon text-white-50">

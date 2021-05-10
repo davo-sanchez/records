@@ -147,7 +147,7 @@ class ExpedienteController extends Controller
     
         }
         
-        return redirect()->route('expediente.index')->with('status','¡Expediente Enviado a la Papelera!');
+        return redirect()->route('expediente.create')->with('status_delete','¡Expediente Enviado a la Papelera!');
 
     }
 
