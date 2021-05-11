@@ -57,7 +57,7 @@ class ExpedienteController extends Controller
             'num_exp' => ucwords($request->num_exp),
             'n_junta' => 'XVI',
             'ano' => $request->ano,
-            'adicional' => mb_strtoupper($request->adicional),
+            'adicional' => '.',
             'actor' => ucwords($request->actor),
             'demandado' => ucwords($request->demandado),
             'concepto' => ucwords($request->concepto),
@@ -106,7 +106,7 @@ class ExpedienteController extends Controller
         $expediente->num_exp = $request->num_exp;
         $expediente->n_junta = $request->n_junta;
         $expediente->ano = $request->ano;
-        $expediente->adicional = $request->adicional;
+        $expediente->adicional = '.';
         $expediente->actor = $request->actor;
         $expediente->demandado = $request->demandado;
         $expediente->concepto = $request->concepto;

@@ -77,12 +77,12 @@
                       <input type="number" min="2000" class="form-control @error('ano') is-invalid @enderror" name="ano" id="ano" aria-describedby="anoHelp" value="{{ $expediente->ano }}">
                       <div class="invalid-feedback">@error('ano') {{ $message }} @enderror</div>
                     </div>
-
+<!--
                     <div class="form-group">
                       <label for="adicional">Adicional</label>
                       <input type="text" class="form-control @error('adicional') is-invalid @enderror" name="adicional" id="adicional" aria-describedby="adicionalHelp" value="{{ $expediente->adicional }}">
                       <div class="invalid-feedback">@error('adicional') {{ $message }} @enderror</div>
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                       <label for="actor">Actor</label>
