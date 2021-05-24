@@ -10,6 +10,7 @@ use App\Http\Requests\ExpedienteUpdateRequest;
 use App\Expediente;
 use App\TipoExpediente;
 use App\Log;
+use App\Holder;
 
 class ExpedienteController extends Controller
 {
@@ -20,7 +21,7 @@ class ExpedienteController extends Controller
 
     public function index(){
         
-        $expedientes = Expediente::all();                
+        $expedientes = Expediente::all(); 
 
         $title = 'Historial Completo';
 
@@ -40,11 +41,11 @@ class ExpedienteController extends Controller
 
     public function create(){
 
-        $tipos_expedientes = TipoExpediente::all();
+        $tipos = TipoExpediente::all();
 
-        return view('expediente.create',[
-            'tipos' => $tipos_expedientes
-        ]);
+        $holders = Holder::all();
+
+        return view('expediente.create', compact('tipos','holders'));
     }
 
     public function store(ExpedienteCreateRequest $request){
@@ -69,6 +70,7 @@ class ExpedienteController extends Controller
             'fecha_apertura' => $request->fecha_apertura,
             'fecha_cierre' => $request->fecha_cierre,
             'creator_id' => Auth::user()->id,
+            'holder_id' => $request->holder,
             'amparo' => $amparo,
             'cerrado' => !empty($request->fecha_cierre) ? 1 : 0
             ]);
@@ -91,7 +93,9 @@ class ExpedienteController extends Controller
 
         $tipos = TipoExpediente::all();
 
-        return view('expediente.view', compact('expediente','tipos'));
+        $holders = Holder::all();
+
+        return view('expediente.view', compact('expediente','tipos','holders'));
 
     }
 
@@ -119,6 +123,7 @@ class ExpedienteController extends Controller
         $expediente->fecha_cierre = $request->fecha_cierre;
         $expediente->cerrado = !empty($request->fecha_cierre) ? 1 : 0;
         $expediente->amparo = $amparo;
+        $expediente->holder_id = $request->holder;
 
         $expediente->save();
 

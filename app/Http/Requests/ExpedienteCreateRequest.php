@@ -39,6 +39,7 @@ class ExpedienteCreateRequest extends FormRequest
             'observaciones' => 'nullable',
             'fecha_apertura' => 'required|date',
             'fecha_cierre' => 'nullable|date',
+            'holder' => 'required'
         ];
     }
 
@@ -60,6 +61,7 @@ class ExpedienteCreateRequest extends FormRequest
             'fecha_apertura.required' => 'Este campo es requerido',
             'fecha_apertura.date' => 'Este campo no es una fecha válida',
             'fecha_cierre.date' => 'Este campo no es una fecha válida',
+            'holder.required' => 'Esta campo es requerido'
         ];
     }
 }

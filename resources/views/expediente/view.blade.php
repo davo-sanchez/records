@@ -151,6 +151,16 @@
                       </label>
                     </div>
 
+                    <div class="form-group">
+                      <label for="holder">En posesión de:</label>
+                      <select class="form-control @error('holder') is-invalid @enderror" id="holder" name="holder">
+                        <option selected disabled>...</option>
+                        @foreach ($holders as $holder)
+                        <option value="{{ $holder->id }}" @if($holder->id == $expediente->holder->id) selected @endif>{{ $holder->name }}</option>  
+                        @endforeach
+                      </select>
+                      <div class="invalid-feedback">@error('holder') {{ $message }} @enderror</div>
+                    </div>
 
                     <div class="row">
                       <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xs-6">

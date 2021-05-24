@@ -32,6 +32,7 @@ class Expediente extends Model
         'fecha_apertura',
         'fecha_cierre',
         'creator_id',
+        'holder',
         'amparo',
         'cerrado'
     ];
@@ -44,5 +45,9 @@ class Expediente extends Model
 
     public function creator(){
         return $this->hasOne('App\User','id','creator_id');
+    }
+
+    public function holder(){
+        return $this->hasOne('App\Holder','id','holder_id');
     }
 }

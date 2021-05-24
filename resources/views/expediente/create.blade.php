@@ -150,6 +150,17 @@
                       </label>
                     </div>
 
+                    <div class="form-group">
+                      <label for="holder">En posesión de:</label>
+                      <select class="form-control @error('holder') is-invalid @enderror" id="holder" name="holder">
+                        <option selected disabled>...</option>
+                        @foreach ($holders as $holder)
+                            <option value="{{ $holder->id }}" @if($holder->id == old('holder')) selected @endif>{{ $holder->name }}</option>  
+                        @endforeach
+                      </select>
+                      <div class="invalid-feedback">@error('holder') {{ $message }} @enderror</div>
+                    </div>
+
                     <button type="submit" class=" mb-3 btn btn-primary btn-icon-split">
                       <span class="icon text-white-50">
                           <i class="fas fa-save"></i>
