@@ -54,8 +54,8 @@ class ExpedienteController extends Controller
 
         $expediente = DB::table('expedientes')->insertGetId([
             'num_caja' => ucwords($request->num_caja),
-            'tipo_exp' => ucwords($request->tipo_exp),
-            'num_exp' => ucwords($request->num_exp),
+            'tipo_exp' => $request->tipo_exp,
+            'num_exp' => $request->num_exp,
             'n_junta' => 'XVI',
             'ano' => $request->ano,
             'adicional' => '.',
@@ -77,8 +77,10 @@ class ExpedienteController extends Controller
 
             if($expediente) {
                 Log::create([
+                    'expediente' => $expediente,
                     'user_id' => Auth::user()->id,
-                    'message' => 'Creación de expediente '.$request->num_exp.'/XVI/'.$request->ano
+                    'message' => 'Creación de expediente '.$request->num_exp.'/XVI/'.$request->ano,
+                    'type' => $request->tipo_exp
                 ]);
 
                 DB::table('tipos_expedientes')->where('tipo_expediente_id','=',$request->tipo_exp)->increment('count');
@@ -95,7 +97,9 @@ class ExpedienteController extends Controller
 
         $holders = Holder::all();
 
-        return view('expediente.view', compact('expediente','tipos','holders'));
+        $history = Log::where('expediente','=',$id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('expediente.view', compact('expediente','tipos','holders','history'));
 
     }
 
@@ -125,15 +129,20 @@ class ExpedienteController extends Controller
         $expediente->amparo = $amparo;
         $expediente->holder_id = $request->holder;
 
-        $expediente->save();
+        $update = $expediente->save();
 
-        Log::create([
-            'user_id' => Auth::user()->id,
-            'message' => 'Actualizzación del expediente. '.$expediente->num_exp.'/XVI/'.$expediente->ano
-        ]);
-
-        return redirect()->route('expediente.view', ['id' => $request->expid])->with('status', '¡Expediente Actualizado!');
-
+        if($update) {
+            Log::create([
+                'user_id' => Auth::user()->id,
+                'message' => 'Actualizzación del expediente. '.$expediente->num_exp.'/XVI/'.$expediente->ano,
+                'expediente' => $request->expid,
+                'type' => $request->tipo_exp
+            ]);
+    
+            return redirect()->route('expediente.view', ['id' => $request->expid])->with('status', '¡Expediente Actualizado!');
+    
+        }
+        
     }
 
     public function delete(Request $request){

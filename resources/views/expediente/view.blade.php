@@ -183,6 +183,38 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 p-3 mt-4">
+
+
+        <div class="card mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bitácora de eventos</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <th>Evento</th>
+                            <th>Estado</th>
+                            <th>Usuario</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($history as $h)
+                                <tr>
+                                    <td>{{ $h->message }}</td>
+                                    <td>{{ $h->types->nombre_tipo_expediente }} <br> 
+                                    {{ date('d-M-y H:m:s', strtotime($h->created_at)) }}
+                                    </td>
+                                    <td>{{ $h->user->name }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $history->links() }}
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
 
 @endsection
