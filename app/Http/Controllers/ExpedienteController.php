@@ -219,4 +219,16 @@ class ExpedienteController extends Controller
 
     }
 
+    public function type($tipo){
+
+        $tipo_exp = TipoExpediente::findOrFail($tipo);
+
+        $title = 'Expedientes: '.$tipo_exp->nombre_tipo_expediente;
+
+        $expedientes = Expediente::where('tipo_exp','=',$tipo)->get();
+        
+        return view('expediente.index', compact('expedientes','title'));
+
+    }
+
 }

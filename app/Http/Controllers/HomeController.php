@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tipos = DB::table('tipos_expedientes')->select('nombre_tipo_expediente', 'count')->get();
+        $tipos = DB::table('tipos_expedientes')->get();
 
         $logs = Log::paginate(5);
 

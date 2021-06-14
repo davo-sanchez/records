@@ -34,6 +34,8 @@ Route::post('/expediente/restaurar','ExpedienteController@restore')->name('exped
 Route::post('/expediente/delete','ExpedienteController@delete')->name('expediente.delete')->middleware('permission:expedientes.trashbin');
 Route::post('/expediente/destruir', 'ExpedienteController@destroy')->name('expediente.destroy')->middleware('permission:expedientes.destroy');
 
+Route::get('/expedientes/{tipo}','ExpedienteController@type')->name('expediente.type');
+
 /****************
  * Usuarios 
  * ****************/
