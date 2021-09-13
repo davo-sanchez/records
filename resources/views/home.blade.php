@@ -12,7 +12,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                <a href="{{ route('expediente.type', ['tipo' => $tipo->tipo_expediente_id]) }}">{{ $tipo->nombre_tipo_expediente }}</a></div>
+                                <a href="{{ route('expediente.type', ['tipo' => $tipo->tipo_expediente_id, 'name' => $tipo->nombre_tipo_expediente]) }}">{{ $tipo->nombre_tipo_expediente }}</a></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 {{ $tipo->count }}
                             </div>

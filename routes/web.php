@@ -34,7 +34,15 @@ Route::post('/expediente/restaurar','ExpedienteController@restore')->name('exped
 Route::post('/expediente/delete','ExpedienteController@delete')->name('expediente.delete')->middleware('permission:expedientes.trashbin');
 Route::post('/expediente/destruir', 'ExpedienteController@destroy')->name('expediente.destroy')->middleware('permission:expedientes.destroy');
 
-Route::get('/expedientes/{tipo}','ExpedienteController@type')->name('expediente.type');
+Route::get('/expedientes/{tipo}/{name}','ExpedienteController@type')->name('expediente.type');
+
+/** expedientes filtros */
+Route::get('/dt/records/all','DataTableController@records_all')->name('dt.records.all');
+Route::get('/dt/records/current_year','DataTableController@current_year')->name('dt.records.current_year');
+Route::get('/dt/records/alive','DataTableController@alive')->name('dt.records.alive');
+Route::get('/dt/records/dead','DataTableController@dead')->name('dt.records.dead');
+
+Route::get('/dt/records/{type}','DataTableController@type')->name('dt.records.type');
 
 /****************
  * Usuarios 

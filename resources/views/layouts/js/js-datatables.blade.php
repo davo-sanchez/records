@@ -6,6 +6,20 @@
       $(document).ready(function() {
 
         var table = $('#example').DataTable( {
+            
+            'ajax': '{{ $expedientes }}',
+            'columns': [
+                {data: 'DT_RowIndex'},
+                {data: 'nombre_tipo_expediente'},
+                {data: 'num_caja'},
+                {data: 'expediente'},
+                {data: 'partes'},
+                {data: 'fecha_apertura'},
+                {data: 'fecha_cierre'},
+                {data: 'num_hojas'},
+                {data: 'informacion'},
+                {data: 'amparo'}
+            ],
             'language': {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -18,7 +32,7 @@
             "sSearch":         "Buscar:",
             "sUrl":            "",
             "sInfoThousands":  ",",
-            "sLoadingRecords": "Cargando...",
+            "sLoadingRecords": "Obteniendo registros...",
             "oPaginate": {
                 "sFirst":    "Primero",
                 "sLast":     "Último",
@@ -36,7 +50,6 @@
         buttons: [
             { extend: 'copy', text: 'Copiar' },
             { extend: 'excel', text: 'Excel' },
-            { extend: 'pdf', text: 'PDF' },
             { extend: 'print', text: 'Imprimir' }
         ]
     } );

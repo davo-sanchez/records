@@ -21,7 +21,7 @@ class ExpedienteController extends Controller
 
     public function index(){
         
-        $expedientes = Expediente::all(); 
+        $expedientes = route('dt.records.all');
 
         $title = 'Historial Completo';
 
@@ -29,10 +29,8 @@ class ExpedienteController extends Controller
     }
 
     public function currentYear(){
-
-        $year = date('Y');
-        
-        $expedientes = Expediente::Where('ano','=', $year)->get();
+     
+        $expedientes = route('dt.records.current_year');
 
         $title = 'Año Actual';
 
@@ -172,7 +170,7 @@ class ExpedienteController extends Controller
     }
 
     public function dead(){
-        $expedientes = Expediente::where('cerrado','=',1)->get();
+        $expedientes = route('dt.records.dead');
 
         $title = 'Archivo Muerto';
 
@@ -180,7 +178,7 @@ class ExpedienteController extends Controller
     }
 
     public function live(){
-        $expedientes = Expediente::where('cerrado','=',0)->get();
+        $expedientes = route('dt.records.alive');
 
         $title = 'Archivo Activo';
 
@@ -219,13 +217,11 @@ class ExpedienteController extends Controller
 
     }
 
-    public function type($tipo){
+    public function type($type, $name){
 
-        $tipo_exp = TipoExpediente::findOrFail($tipo);
+        $expedientes = route('dt.records.type', ['type' => $type]);
 
-        $title = 'Expedientes: '.$tipo_exp->nombre_tipo_expediente;
-
-        $expedientes = Expediente::where('tipo_exp','=',$tipo)->get();
+        $title = 'Expedientes: '.$name;
         
         return view('expediente.index', compact('expedientes','title'));
 
