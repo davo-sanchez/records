@@ -50,7 +50,3 @@
 </div>
 
 @endsection
-
-@section('js-datatables')
-    @include('layouts.js.js-datatables')
-@endsection
