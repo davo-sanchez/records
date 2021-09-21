@@ -30,8 +30,9 @@
                         <th>Tipo</th>
                         <th>Caja</th>
                         <th>#Expediente</th>
-                        <th>Nombre de las Partes</th>
-                        <th>Fecha Apertura</th>
+                        <th>Actor</th>
+                        <th>Demandado</th>
+                        <th>Concepto</th>
                         <th>Fecha Cierre</th>
                         <th>#Hojas</th>
                         <th>Carácter de la Información</th>

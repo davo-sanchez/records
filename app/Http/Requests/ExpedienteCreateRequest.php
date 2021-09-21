@@ -24,7 +24,7 @@ class ExpedienteCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'num_caja' => 'required|min:1|max:2',
+            'num_caja' => 'nullable|min:1|max:2',
             'tipo_exp' => 'required',
             'num_exp' => 'required',
             'n_junta' => 'required',

@@ -24,7 +24,7 @@ class ExpedienteUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'num_caja' => 'required|min:1|max:2',
+            'num_caja' => 'nullable|min:1|max:2',
             'tipo_exp' => 'required',
             'num_exp' => 'required',
             'n_junta' => 'required',
@@ -45,7 +45,6 @@ class ExpedienteUpdateRequest extends FormRequest
 
     public function messages(){
         return [
-            'num_caja.required' => 'Este campo es requerido',
             'num_caja.min' => 'Este campo debe contener al menos 1 letra',
             'num_caja.max' => 'Este campo debe contener como máximo 2 letras',
             'tipo_exp.required' => 'Este campo es requerido',
