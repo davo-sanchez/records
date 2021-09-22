@@ -30,6 +30,8 @@
                         <th>Tipo</th>
                         <th>Caja</th>
                         <th>#Expediente</th>
+                        <th>Junta</th>
+                        <th>Año</th>
                         <th>Actor</th>
                         <th>Demandado</th>
                         <th>Concepto</th>

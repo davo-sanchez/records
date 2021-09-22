@@ -9,10 +9,12 @@
             
             'ajax': '{{ $expedientes }}',
             'columns': [
-                {data: 'DT_RowIndex'},
+                {'defaultContent': ''},
                 {data: 'nombre_tipo_expediente'},
                 {data: 'num_caja'},
-                {data: 'expediente'},
+                {data: 'num_exp'},
+                {data: 'n_junta'},
+                {data: 'ano'},
                 {data: 'actor'},
                 {data: 'demandado'},
                 {data: 'concepto'},
@@ -20,6 +22,9 @@
                 {data: 'num_hojas'},
                 {data: 'informacion'},
                 {data: 'amparo'}
+            ],
+            "order": [
+                [5, 'asc'],[3, 'asc']
             ],
             'language': {
             "sProcessing":     "Procesando...",
@@ -54,6 +59,12 @@
             { extend: 'print', text: 'Imprimir' }
         ]
     } );
+
+    table.on( 'order.dt search.dt', function () {
+        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
     
         // Setup - add a text input to each footer cell
     $('#example thead tr').clone(true).appendTo( '#example thead' );
