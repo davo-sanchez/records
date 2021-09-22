@@ -37,14 +37,10 @@ class DataTableController extends Controller
         ->get();
 
         return Datatables::of($expedientes)
-        ->addIndexColumn()
-        ->addColumn('expediente', function ($expedientes) {
-            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->num_exp.'/XVI/'.$expedientes->ano.'</a>';
+        ->addColumn('junta', function ($expedientes) {
+            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->n_junta.'</a>';
         })
-        ->addColumn('partes', function($expedientes){
-            return $expedientes->actor.' -VS- '.$expedientes->demandado.': '.$expedientes->concepto;
-        })
-        ->rawColumns(['expediente'])
+        ->rawColumns(['junta'])
         ->addColumn('informacion', 'Público')
         ->editColumn('amparo', '{{ $amparo ? "SI" : "NO" }}')
         ->make(true);
@@ -83,14 +79,10 @@ class DataTableController extends Controller
         ->get();
 
         return Datatables::of($expedientes)
-        ->addIndexColumn()
-        ->addColumn('expediente', function ($expedientes) {
-            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->num_exp.'/XVI/'.$expedientes->ano.'</a>';
+        ->addColumn('junta', function ($expedientes) {
+            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->n_junta.'</a>';
         })
-        ->addColumn('partes', function($expedientes){
-            return $expedientes->actor.' -VS- '.$expedientes->demandado.': '.$expedientes->concepto;
-        })
-        ->rawColumns(['expediente'])
+        ->rawColumns(['junta'])
         ->addColumn('informacion', 'Público')
         ->editColumn('amparo', '{{ $amparo ? "SI" : "NO" }}')
         ->make(true);
@@ -129,14 +121,10 @@ class DataTableController extends Controller
         ->get();
 
         return Datatables::of($expedientes)
-        ->addIndexColumn()
-        ->addColumn('expediente', function ($expedientes) {
-            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->num_exp.'/XVI/'.$expedientes->ano.'</a>';
+        ->addColumn('junta', function ($expedientes) {
+            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->n_junta.'</a>';
         })
-        ->addColumn('partes', function($expedientes){
-            return $expedientes->actor.' -VS- '.$expedientes->demandado.': '.$expedientes->concepto;
-        })
-        ->rawColumns(['expediente'])
+        ->rawColumns(['junta'])
         ->addColumn('informacion', 'Público')
         ->editColumn('amparo', '{{ $amparo ? "SI" : "NO" }}')
         ->make(true);
@@ -175,14 +163,10 @@ class DataTableController extends Controller
         ->get();
 
         return Datatables::of($expedientes)
-        ->addIndexColumn()
-        ->addColumn('expediente', function ($expedientes) {
-            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->num_exp.'/XVI/'.$expedientes->ano.'</a>';
+        ->addColumn('junta', function ($expedientes) {
+            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->n_junta.'</a>';
         })
-        ->addColumn('partes', function($expedientes){
-            return $expedientes->actor.' -VS- '.$expedientes->demandado.': '.$expedientes->concepto;
-        })
-        ->rawColumns(['expediente'])
+        ->rawColumns(['junta'])
         ->addColumn('informacion', 'Público')
         ->editColumn('amparo', '{{ $amparo ? "SI" : "NO" }}')
         ->make(true);
@@ -221,14 +205,10 @@ class DataTableController extends Controller
         ->get();
 
         return Datatables::of($expedientes)
-        ->addIndexColumn()
-        ->addColumn('expediente', function ($expedientes) {
-            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->num_exp.'/XVI/'.$expedientes->ano.'</a>';
+        ->addColumn('junta', function ($expedientes) {
+            return '<a href="'.route('expediente.view', ['id' => $expedientes->expediente_id]).'">'.$expedientes->n_junta.'</a>';
         })
-        ->addColumn('partes', function($expedientes){
-            return $expedientes->actor.' -VS- '.$expedientes->demandado.': '.$expedientes->concepto;
-        })
-        ->rawColumns(['expediente'])
+        ->rawColumns(['junta'])
         ->addColumn('informacion', 'Público')
         ->editColumn('amparo', '{{ $amparo ? "SI" : "NO" }}')
         ->make(true);

@@ -13,7 +13,7 @@
                 {data: 'nombre_tipo_expediente'},
                 {data: 'num_caja'},
                 {data: 'num_exp'},
-                {data: 'n_junta'},
+                {data: 'junta'},
                 {data: 'ano'},
                 {data: 'actor'},
                 {data: 'demandado'},
