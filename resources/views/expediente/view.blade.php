@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                       <label for="ano">Año</label>
-                      <input type="number" min="2000" class="form-control @error('ano') is-invalid @enderror" name="ano" id="ano" aria-describedby="anoHelp" value="{{ $expediente->ano }}">
+                      <input type="number" min="1900" class="form-control @error('ano') is-invalid @enderror" name="ano" id="ano" aria-describedby="anoHelp" value="{{ $expediente->ano }}">
                       <div class="invalid-feedback">@error('ano') {{ $message }} @enderror</div>
                     </div>
 <!--

@@ -18,6 +18,7 @@
                 {data: 'actor'},
                 {data: 'demandado'},
                 {data: 'concepto'},
+                {data: 'fecha_apertura'},
                 {data: 'fecha_cierre'},
                 {data: 'num_hojas'},
                 {data: 'informacion'},

@@ -35,6 +35,7 @@
                         <th>Actor</th>
                         <th>Demandado</th>
                         <th>Concepto</th>
+                        <th>Fecha Apertura</th>
                         <th>Fecha Cierre</th>
                         <th>#Hojas</th>
                         <th>Carácter de la Información</th>
